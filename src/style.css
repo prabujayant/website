@@ -61,7 +61,7 @@ button:focus {
 /* Scrollbar */
 /* --------- */
 
-//* Custom Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
