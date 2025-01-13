@@ -1,31 +1,22 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import {
-  SiVisualstudiocode,
-  SiPostman,
-  SiSlack,
-  SiVercel,
-} from "react-icons/si";
-
+import { SiVisualstudiocode, SiPostman, SiVercel } from "react-icons/si";
 import { FaWindows } from "react-icons/fa";
 
 function Toolstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
       <Col xs={4} md={2} className="tech-icons">
-        <FaWindows />
+        <FaWindows style={{ color: "#d4af37" }} />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiVisualstudiocode />
+        <SiVisualstudiocode style={{ color: "#d4af37" }} />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiPostman />
+        <SiPostman style={{ color: "#d4af37" }} />
       </Col>
-      {/* <Col xs={4} md={2} className="tech-icons">
-        <SiSlack />
-      </Col> */}
       <Col xs={4} md={2} className="tech-icons">
-        <SiVercel />
+        <SiVercel style={{ color: "#d4af37" }} />
       </Col>
     </Row>
   );

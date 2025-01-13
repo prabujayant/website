@@ -27,7 +27,7 @@
 
 ## TL;DR
 
-You can fork this repo to modify and make changes of your own. Please give me proper credit by linking back to [Prabu17](https://github.com/Prabu17/Portfolio). Thanks!
+You can fork this repo to modify and make changes of your own. Please give me proper credit by linking back to [Prabu17](https://github.com/prabujayant/Portfolio). Thanks!
 
 ## Built With
 
