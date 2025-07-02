@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import logo from "../Assets/image.png";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
@@ -37,13 +36,19 @@ function NavBar() {
       expand="md"
       className={navColour ? "sticky" : "navbar"}
       style={{
-        backgroundColor: navColour ? "#1a1a1a" : "transparent",
+        backgroundColor: navColour ? "#2a1a4a" : "transparent",
         transition: "all 0.3s ease-in-out",
       }}
     >
       <Container>
-        <Navbar.Brand href="/" className="d-flex">
-          <img src={logo} className="img-fluid logo" alt="brand" />
+        <Navbar.Brand as={Link} to="/" className="d-flex">
+          <span style={{ 
+            color: "#8b5cf6", 
+            fontSize: "1.5rem", 
+            fontWeight: "bold" 
+          }}>
+            Portfolio
+          </span>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -63,7 +68,7 @@ function NavBar() {
                 to="/"
                 onClick={() => updateExpanded(false)}
                 style={{
-                  color: navColour ? "#d4af37" : "#fff",
+                  color: navColour ? "#8b5cf6" : "#fff",
                   fontSize: "1.1em",
                   transition: "color 0.3s ease",
                 }}
@@ -78,7 +83,7 @@ function NavBar() {
                 to="/about"
                 onClick={() => updateExpanded(false)}
                 style={{
-                  color: navColour ? "#d4af37" : "#fff",
+                  color: navColour ? "#8b5cf6" : "#fff",
                   fontSize: "1.1em",
                   transition: "color 0.3s ease",
                 }}
@@ -93,7 +98,7 @@ function NavBar() {
                 to="/project"
                 onClick={() => updateExpanded(false)}
                 style={{
-                  color: navColour ? "#d4af37" : "#fff",
+                  color: navColour ? "#8b5cf6" : "#fff",
                   fontSize: "1.1em",
                   transition: "color 0.3s ease",
                 }}
@@ -109,7 +114,7 @@ function NavBar() {
                 to="/resume"
                 onClick={() => updateExpanded(false)}
                 style={{
-                  color: navColour ? "#d4af37" : "#fff",
+                  color: navColour ? "#8b5cf6" : "#fff",
                   fontSize: "1.1em",
                   transition: "color 0.3s ease",
                 }}
@@ -118,29 +123,14 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            {/* <Nav.Item>
-              <Nav.Link
-                href="https://soumyajitblogs.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  color: navColour ? "#d4af37" : "#fff",
-                  fontSize: "1.1em",
-                  transition: "color 0.3s ease",
-                }}
-              >
-                <ImBlog style={{ marginBottom: "2px" }} /> Blogs
-              </Nav.Link>
-            </Nav.Item> */}
-
             <Nav.Item className="fork-btn">
               <Button
                 href="https://github.com/prabujayant/"
                 target="_blank"
                 className="fork-btn-inner"
                 style={{
-                  backgroundColor: "#d4af37",
-                  color: "#1a1a1a",
+                  backgroundColor: "#8b5cf6",
+                  color: "#fff",
                   fontWeight: "bold",
                   border: "none",
                   borderRadius: "20px",
