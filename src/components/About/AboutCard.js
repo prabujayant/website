@@ -8,75 +8,56 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0" style={{ color: "white" }}>
           <p style={{ textAlign: "justify", color: "white" }}>
-            Hi, I'm <span className="purple">Prabu Jayant</span> from{" "}
-            <span className="purple">Bangalore, India.</span>
+            Hi, I'm <span className="purple">Siti Annisa Dahlan</span> from{" "}
+            <span className="purple">Kendari, Indonesia.</span>
             <br />
-            I'm pursuing a B.E. in Computer Science Engineering (Cybersecurity) at RV College of Engineering, with a strong focus on cutting-edge technologies like Machine Learning, Artificial Intelligence, and Cybersecurity.
+            I'm a motivated English Language Education student at Halu Oleo University, passionate about combining education and technology to enhance learning outcomes globally. I was also a PMM4 Student Exchange Awardee, funded by the Ministry of Education, Culture, Research, and Technology.
             <br />
             <br />
-            I've developed impactful projects and research contributions:
+            Here are some highlights from my work and experiences:
             <ul>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>DefenSys:</strong> Built a comprehensive cyber defense platform with 95%+ malware classification accuracy using Docker, TensorFlow, and ResNet.
+                <ImPointRight /> Currently pursuing a Bachelor of English Language Education at Halu Oleo University (GPA: 3.35/4.0).
               </li>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>Terra:</strong> Developed an AI-powered carbon footprint companion using Llama 3.2, Flask, and Firebase with OCR-based eco-shopping features.
+                <ImPointRight /> As a Digital Marketing Intern at GAO Tek Inc., I executed 4,000+ marketing emails and created B2B content, earning "Best Intern of the Week".
               </li>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>MediSync:</strong> Created a smart health monitoring system utilizing ML, TensorFlow, and IoT for anomaly detection.
+                <ImPointRight /> At Scholars Official, I developed Instagram campaigns for TOEFL/IELTS, engaging 5,000+ users and improving CTR by 20%.
               </li>
             </ul>
             <br />
-            My research work has been published in prestigious IEEE conferences:
+            My projects showcase my blend of educational and digital skills:
             <ul>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>ICWIHI 2025:</strong> Adaptive ML Framework for SaaS Traffic Classification in Cloud Ecosystem.
+                <ImPointRight /> Developed Think Ink Digital Reading Platform, an interactive website with exercises for junior high students.
               </li>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>ICoICI 2024:</strong> Smart Health Monitoring and Anomaly Detection Using IoT and AI.
+                <ImPointRight /> Created a Collaborative Digital Book for English learning, focusing on speaking and listening skills.
               </li>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>ICCCNT 2024:</strong> Intrusion Detection Using LSTM and Deep Learning.
+                <ImPointRight /> Produced Educational Video Content and managed the Explore With Annis Blog documenting cultural exchange.
               </li>
             </ul>
             <br />
-            My technical expertise spans:
+            I'm passionate about:
             <ul>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>Machine Learning & AI:</strong> TensorFlow, PyTorch, LSTM, ResNet, CNNs, and RAG systems.
+                <ImPointRight /> Creating engaging digital learning experiences.
               </li>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>Full-Stack Development:</strong> MERN Stack, React, Flask, Firebase, and RESTful APIs.
+                <ImPointRight /> Leveraging social media for effective communication and marketing.
               </li>
               <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>Cybersecurity:</strong> Malware detection, intrusion detection systems, and network security.
-              </li>
-              <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> <strong>Cloud & DevOps:</strong> Docker, containerization, and cloud ecosystem optimization.
-              </li>
-            </ul>
-            <br />
-            Beyond academics, I'm passionate about:
-            <ul>
-              <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> Exploring emerging technologies in AI and cybersecurity.
-              </li>
-              <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> Contributing to open-source projects and research communities.
-              </li>
-              <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> Writing technical articles and sharing knowledge through blogs.
-              </li>
-              <li style={{ color: "#d4af37" }}>
-                <ImPointRight /> Attending tech conferences and networking with industry professionals.
+                <ImPointRight /> Contributing to youth empowerment initiatives.
               </li>
             </ul>
 
             <p style={{ color: "rgb(155, 126, 172)", fontStyle: "italic" }}>
-              "Driven by curiosity and committed to leveraging technology for meaningful impact in cybersecurity and AI!"
+              "Committed to fostering engaging educational environments through digital innovation and effective communication!"
             </p>
             <footer className="blockquote-footer" style={{ color: "#d4af37" }}>
-              Prabu Jayant
+              Siti Annisa Dahlan
             </footer>
           </p>
         </blockquote>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Github, Instagram, Linkedin } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 
 function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,21 +11,31 @@ function Home() {
 
   const achievements = [
     {
-      title: "CODE RED'25 National Level Hackathon",
-      description: "Won the Consolidation Prize of INR 10,000 finishing 4th out of 1000+ teams nationally.",
+      title: "🥉 3rd Place - Kalla Youth Fest Hackathon 2024",
+      description: "Awarded 3rd place with a sustainable wind turbine innovation supporting SDGs 2045. Won IDR 1,000,000 cash prize.",
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
     },
     {
-      title: "ELCIA Next-Gen Innovative Tech Hackathon", 
-      description: "Finished in the top 10 out of 500+ teams all over India and won INR 10,000.",
+      title: "🏅 Top 150 Essay - Andalas University", 
+      description: "Selected as one of the top 150 essays out of 1,000+ participants in the national science competition.",
       gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+    },
+    {
+      title: "🥉 Bronze Medal - National Language Olympiad",
+      description: "Achieved Bronze Medal (Top 10 out of 1,000+) in English and Indonesian language categories by Gypem Indonesia.",
+      gradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)"
+    },
+    {
+      title: "🎓 PMM4 Student Exchange Awardee",
+      description: "Selected for the PMM4 Student Exchange Program with full funding of $1,017.28 USD to study at Universitas Nusa Cendana.",
+      gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
     }
   ];
 
   const socialLinks = [
-    { icon: Github, url: "https://github.com/Prabu17", color: "#333" },
-    { icon: Linkedin, url: "https://www.linkedin.com/in/prabu-jayant-6b316b251/", color: "#0077b5" },
-    { icon: Instagram, url: "https://www.instagram.com/prabujayant17/", color: "#e4405f" }
+    { icon: Mail, url: "mailto:sitiannisadahlan@email.com", color: "#ea4335" },
+    { icon: Linkedin, url: "https://linkedin.com/in/siti-annisa-dahlan", color: "#0077b5" },
+    { icon: Instagram, url: "https://instagram.com/sitiannisadahlan", color: "#e4405f" }
   ];
 
   return (
@@ -118,13 +128,13 @@ function Home() {
                 marginBottom: "0",
                 textAlign: "left"
               }}>
-                I am driven by the passion to create innovative solutions that solve real-world challenges. My journey began with a deep interest in coding, which quickly transformed into a love for problem-solving using technology.
+                I am driven by the passion to merge education, creativity, and digital innovation to empower youth through impactful content creation. My journey started with a love for teaching English, which quickly transformed into expertise in digital marketing and social media development.
                 <br /><br />
-                Throughout my journey, I've honed my skills in <span style={{color: "#ffd700", fontWeight: "600"}}>Python, C/C++, JavaScript, and the MERN Stack</span>, and I've taken on leadership roles in multiple hackathons and projects where I guided teams to success.
+                Throughout my academic and professional journey, I've honed my skills in <span style={{color: "#ffd700", fontWeight: "600"}}>digital marketing, content creation, social media management, and educational material development</span>. I've taken on leadership roles in various projects where I guided teams to create engaging digital experiences.
                 <br /><br />
-                I lead by example, always striving for excellence while collaborating to deliver impactful projects in areas like <span style={{color: "#ffd700", fontWeight: "600"}}>web development, machine learning, and cybersecurity</span>. Building real-world applications using Node.js and React.js is where my passion truly lies, and I continue to explore new ways to innovate and challenge myself.
+                I lead with intention, always striving to make educational experiences more accessible through <span style={{color: "#ffd700", fontWeight: "600"}}>creative digital tools, community engagement, and innovative content strategies</span>. My work spans from developing educational websites and digital books to managing social media campaigns and creating video content for students.
                 <br /><br />
-                My belief is simple: <span style={{color: "#ffd700", fontWeight: "600"}}>true leadership comes from the ability to inspire others and turn ideas into reality</span>. I'm committed to learning, sharing knowledge, and pushing the limits of technology in every project I take on.
+                My belief is simple: <span style={{color: "#ffd700", fontWeight: "600"}}>true impact comes from making learning dynamic, inclusive, and inspiring through digital innovation</span>. I'm committed to empowering others through education and creative digital storytelling.
               </p>
             </div>
           </div>
@@ -165,7 +175,7 @@ function Home() {
                   color: "white",
                   fontWeight: "bold"
                 }}>
-                  👨‍💻
+                  👩‍🎓
                 </div>
               </div>
               
@@ -185,7 +195,7 @@ function Home() {
                 animation: "float 3s ease-in-out infinite",
                 backdropFilter: "blur(10px)"
               }}>
-                ⚡
+                📚
               </div>
               
               <div style={{
@@ -203,7 +213,25 @@ function Home() {
                 animation: "float 4s ease-in-out infinite reverse",
                 backdropFilter: "blur(10px)"
               }}>
-                🚀
+                ✨
+              </div>
+              
+              <div style={{
+                position: "absolute",
+                top: "60%",
+                right: "-10%",
+                width: "45px",
+                height: "45px",
+                background: "rgba(199, 112, 240, 0.3)",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "18px",
+                animation: "float 5s ease-in-out infinite",
+                backdropFilter: "blur(10px)"
+              }}>
+                🌟
               </div>
             </div>
           </div>
@@ -231,11 +259,27 @@ function Home() {
           </h2>
           
           <div style={{ 
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            display: "flex", // Changed from "grid" to "flex"
+            flexWrap: "nowrap", // Added to ensure items stay in one line
             gap: "30px",
-            padding: "0 20px"
+            padding: "0 20px",
+            overflowX: "auto", // Added for horizontal scrolling if content overflows
+            scrollbarWidth: "thin", // For Firefox
+            scrollbarColor: "rgba(255, 215, 0, 0.5) transparent" // For Firefox
           }}>
+            {/* Custom scrollbar for Webkit browsers */}
+            <style>{`
+              div::-webkit-scrollbar {
+                height: 8px;
+              }
+              div::-webkit-scrollbar-thumb {
+                background-color: rgba(255, 215, 0, 0.5);
+                border-radius: 10px;
+              }
+              div::-webkit-scrollbar-track {
+                background: transparent;
+              }
+            `}</style>
             {achievements.map((achievement, index) => (
               <div
                 key={index}
@@ -255,7 +299,9 @@ function Home() {
                   border: "1px solid rgba(255, 255, 255, 0.2)",
                   cursor: "pointer",
                   position: "relative",
-                  overflow: "hidden"
+                  overflow: "hidden",
+                  minWidth: "300px", // Ensure minimum width for each card
+                  flexShrink: 0 // Prevent cards from shrinking
                 }}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -398,6 +444,13 @@ function Home() {
           10% { opacity: 1; transform: scale(1); }
           90% { opacity: 1; }
           100% { transform: translateY(-100px) scale(0); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+          .grid-container {
+            grid-template-columns: 1fr !important;
+            gap: 30px !important;
+          }
         }
       `}</style>
     </div>

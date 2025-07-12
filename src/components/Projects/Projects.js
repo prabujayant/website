@@ -2,114 +2,141 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import medisyncImg from "../../Assets/Projects/medisync.png";
-import bookstoreImg from "../../Assets/Projects/bookstore.png";
-import newsImg from "../../Assets/Projects/news.png";
-// Add placeholder images for new projects or use actual image imports
-import defensysImg from "../../Assets/Projects/defensys.png"; // Add your DefenSys image
-import terraImg from "../../Assets/Projects/terra.png"; // Add your Terra image
+// Removed image imports as per user's request
 
 function Projects() {
   return (
-    <Container fluid className="project-section" style={{ backgroundColor: "#1d1d1d", paddingTop: "50px" }}>
-      <Particle />
-      <Container>
-        <h1 className="project-heading" style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px" }}>
-          My Recent <strong className="purple">Works</strong>
+    <Container
+      fluid
+      className="project-section"
+      style={{
+        background: "linear-gradient(180deg, #1d1d1d 0%, #0a0a0a 100%)", // Darker, more gradient background
+        paddingTop: "80px", // More padding at the top
+        paddingBottom: "80px", // More padding at the bottom
+        position: "relative",
+        overflow: "hidden", // Ensure particles and effects stay within
+      }}
+    >
+      <Particle /> {/* Assuming Particle component adds background animations */}
+      <Container style={{ position: "relative", zIndex: 1 }}> {/* Ensure content is above particles */}
+        <h1
+          className="project-heading"
+          style={{
+            color: "#ffd700", // Brighter gold for heading
+            fontWeight: "bold",
+            marginBottom: "20px", // Adjusted margin
+            fontSize: "3.2em", // Larger font size for impact
+            textShadow: "0 0 15px rgba(255, 215, 0, 0.3)", // Subtle glow effect
+            letterSpacing: "1px", // Slight letter spacing
+            textAlign: "center", // Center align heading
+          }}
+        >
+          Annisa's Recent <strong style={{ color: "#c770f0" }}>Works</strong> {/* Highlight "Works" in purple */}
         </h1>
-        <p style={{ color: "white", fontSize: "1.2em", marginBottom: "50px" }}>
+        <p
+          style={{
+            color: "rgba(255, 255, 255, 0.9)", // Slightly less bright white for description
+            fontSize: "1.3em", // Slightly larger font size
+            marginBottom: "70px", // Increased margin below description
+            lineHeight: "1.6", // Improved readability
+            maxWidth: "800px", // Limit width for better readability on large screens
+            margin: "0 auto 70px auto", // Center the paragraph
+            textAlign: "center", // Center align paragraph
+            opacity: 0.9,
+          }}
+        >
           Here are a few projects I've worked on recently.
         </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={4} className="project-card">
+        <Row
+          style={{
+            justifyContent: "center",
+            paddingBottom: "10px",
+            gap: "30px", // Add gap between project cards for better spacing
+            display: "flex",
+            flexWrap: "wrap", // Allow cards to wrap on smaller screens
+          }}
+        >
+          <Col md={4} className="project-card d-flex justify-content-center"> {/* Center card in column */}
             <ProjectCard
-              imgPath={defensysImg}
+              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
               isBlog={false}
-              title="DefenSys - Integrated Deep Learning Platform"
-              description="A comprehensive cyber defense platform integrating malware detection with dynamic attack simulation, achieving 95%+ classification accuracy across 25+ malware families using Docker, Python, React, TensorFlow, and ResNet."
-              ghLink="https://github.com/prabujayant/DefenSys" // Update with actual GitHub link
+              title="Digital English Book (Book Creator)"
+              description="A collaborative project featuring student-generated English texts, visual, and speaking and listening activities helps students especially in junior high school."
+              demoLink="https://read.bookcreator.com/kWWJwNINR0dg7GPkPfi4sdGpygH2/99UftvSAQ4yveIKrRaXmVw" // Updated link
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              imgPath={terraImg}
+              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
               isBlog={false}
-              title="Terra - AI-based Personalized Carbon Footprint Companion"
-              description="AI-powered mobile application integrating RAG with Llama 3.2 3B Instruct model for personalized carbon emission tracking. Features OCR-based eco-shopping assistant and comprehensive carbon footprint calculator with Firebase integration."
-              ghLink="https://github.com/prabujayant/Terra" // Update with actual GitHub link
+              title="Teaching & Tutorial Videos (Padlet)"
+              description="Recorded classroom tutorials and educational video content designed for young learners and beginner English students."
+              viewLink="https://www.youtube.com/@sitiannisadahlan241" // Please update this with the correct YouTube/Padlet link
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              imgPath={bookstoreImg}
+              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
               isBlog={false}
-              title="Book Store MERN Stack Project"
-              description="A full-stack application built with MongoDB, Express.js, React, and Node.js (MERN) for managing a book store."
-              ghLink="https://github.com/prabujayant/BookStore-MERN"
+              title="Think Ink Website"
+              description="A reading platform built using Weebly to help junior high school students enhance their reading comprehension."
+              demoLink="https://thinkinkreading2025.weebly.com"
             />
           </Col>
         </Row>
 
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={4} className="project-card">
+        <Row
+          style={{
+            justifyContent: "center",
+            paddingBottom: "10px",
+            gap: "30px", // Add gap between project cards for better spacing
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
+          <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              imgPath={newsImg}
-              isBlog={false}
-              title="News App"
-              description="A fully responsive News Application that fetches and displays real-time news articles using the News API."
-              ghLink="https://github.com/prabujayant/NewsApp"
-              viewLink="https://prabujayant.github.io/NewsApp/"
+              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
+              isBlog={true} // Set to true as it's a blog
+              title="Explore With Annis – Exchange Program Blog"
+              description="Blogging reflections, travel experiences, and academic growth during my PMM4 student exchange."
+              demoLink="https://explorewithannis.weebly.com"
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              imgPath={medisyncImg}
-              isBlog={false}
-              title="MediSync: Smart Health Monitoring using Machine Learning & IoT"
-              description="An innovative smart health monitoring platform utilizing Machine Learning, TensorFlow, and IoT for early anomaly detection and data-driven decision-making."
-              ghLink="https://github.com/prabujayant/MediSync-Smart-Health-Monitoring-System"
-              viewLink="https://drive.google.com/file/d/1KefmGBYEHOlIXaXR9JIy-E3E5xa_ijS1/view"
+              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
+              isBlog={true} // Set to true as it's a blog
+              title="Useful Information Blog"
+              description="A personal blog for sharing useful information and insights."
+              demoLink="https://sitiannisadahlan.blogspot.com/"
             />
           </Col>
+          {/* Add more projects here as needed, following the structure */}
         </Row>
 
-        <h1 className="project-heading" style={{ color: "#d4af37", fontWeight: "bold", marginTop: "50px", marginBottom: "30px" }}>
-          My <strong className="purple">Research Works</strong>
-        </h1>
-        <p style={{ color: "white", fontSize: "1.2em", marginBottom: "50px" }}>
-          These are some of my recent research publications.
-        </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={4} className="project-card">
-            <ProjectCard
-              title="Adaptive ML Framework for SaaS Traffic Classification in Cloud Ecosystem"
-              description="ICWIHI 2025. Presented at the International Conference on Web Intelligence and Human-Machine Interaction, organized by R P Sarathy Institute of Technology, Salem, Tamil Nadu, India."
-              viewLink="https://drive.google.com/file/d/1B3tt_W8u3wbktvR13hm7hObToNdV87Ww/view"
-              isBlog={true}
-            />
-          </Col>
+        {/* CSS for responsive adjustments and animations (if any specific to Projects.js) */}
+        <style>{`
+          /* Add any specific styles for Project.js here if needed, e.g., animations for the section */
+          .project-section {
+            animation: fadeIn 1s ease-out;
+          }
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              title="Smart Health Monitoring and Anomaly Detection Using IoT and AI"
-              description="ICoICI 2024. This paper focuses on leveraging IoT and AI for health monitoring and anomaly detection."
-              viewLink="https://ieeexplore.ieee.org/document/10724486"
-              isBlog={true}
-            />
-          </Col>
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              title="Intrusion Detection Using LSTM and Deep Learning"
-              description="ICCCNT 2024. A deep learning approach for intrusion detection using LSTM models."
-              viewLink="https://ieeexplore.ieee.org/document/10696283"
-              isBlog={true}
-            />
-          </Col>
-        </Row>
+          /* Ensure project cards are centered and spaced on smaller screens */
+          @media (max-width: 768px) {
+            .project-card {
+              margin-bottom: 30px; /* Add margin between cards for vertical spacing */
+            }
+          }
+        `}</style>
       </Container>
     </Container>
   );

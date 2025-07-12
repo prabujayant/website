@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
-import { ImBlog } from "react-icons/im";
+import { ImBlog } from "react-icons/im"; // This import is unused after removing blog link, but leaving it as it was in original.
 import {
   AiFillStar,
   AiOutlineHome,
@@ -123,7 +123,8 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item className="fork-btn">
+            {/* Removed the entire GitHub button section */}
+            {/* <Nav.Item className="fork-btn">
               <Button
                 href="https://github.com/prabujayant/"
                 target="_blank"
@@ -141,6 +142,7 @@ function NavBar() {
                 <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
             </Nav.Item>
+            */}
           </Nav>
         </Navbar.Collapse>
       </Container>

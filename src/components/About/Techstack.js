@@ -1,209 +1,135 @@
 import React from "react";
-import { Col, Row, Card, Container } from "react-bootstrap";
-import { CgCPlusPlus } from "react-icons/cg";
+import { Col, Row, Container } from "react-bootstrap";
 import {
-  DiJavascript1,
-  DiReact,
-  DiNodejs,
-  DiMongodb,
-  DiGit,
-} from "react-icons/di";
-import { FaHtml5, FaCss3, FaShieldAlt } from "react-icons/fa";
-import { SiTailwindcss, SiExpress, SiThealgorithms, SiVite, SiDocker } from "react-icons/si";
-import { IoLogoGithub } from "react-icons/io5";
+  MdLanguage
+} from "react-icons/md";
+import {
+  IoLogoInstagram, IoLogoTiktok, IoLogoTwitter, IoLogoYoutube
+} from "react-icons/io5";
 
 function Techstack() {
+  const boxStyle = {
+    background: "linear-gradient(135deg, rgba(29, 29, 29, 0.9) 0%, rgba(45, 45, 60, 0.9) 100%)", // Subtle gradient background
+    borderRadius: "15px",
+    padding: "30px 25px", // Increased padding for more space
+    boxShadow: "0 8px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 175, 55, 0.2)", // Enhanced shadow
+    transition: "all 0.3s ease-in-out", // Smooth transition for all properties
+    border: "1px solid rgba(212, 175, 55, 0.3)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%", // Ensure consistent height for boxes in a row
+    cursor: "default", // Informational display, not interactive
+  };
+
+  const hoverEffect = {
+    onMouseEnter: (e) => {
+      e.currentTarget.style.transform = "translateY(-10px) scale(1.02)"; // Lift and slight scale
+      e.currentTarget.style.boxShadow = "0 15px 35px rgba(0,0,0,0.7), 0 0 25px rgba(199, 112, 240, 0.5), 0 0 40px rgba(212, 175, 55, 0.3)"; // More pronounced shadow with purple/gold glow
+      e.currentTarget.style.background = "linear-gradient(135deg, rgba(45, 45, 60, 0.95) 0%, rgba(29, 29, 29, 0.95) 100%)"; // Subtle background change on hover
+      // Change color of text/icons inside on hover for social media icons
+      const icons = e.currentTarget.querySelectorAll('svg');
+      icons.forEach(icon => icon.style.color = "#c770f0"); // Purple on hover
+      const textDivs = e.currentTarget.querySelectorAll('div');
+      textDivs.forEach(div => div.style.color = "#c770f0"); // Purple on hover for text
+    },
+    onMouseLeave: (e) => {
+      e.currentTarget.style.transform = "translateY(0) scale(1)";
+      e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 175, 55, 0.2)";
+      e.currentTarget.style.background = "linear-gradient(135deg, rgba(29, 29, 29, 0.9) 0%, rgba(45, 45, 60, 0.9) 100%)";
+      // Revert color of text/icons inside on leave for social media icons
+      const icons = e.currentTarget.querySelectorAll('svg');
+      icons.forEach(icon => icon.style.color = "#d4af37"); // Gold on leave
+      const textDivs = e.currentTarget.querySelectorAll('div');
+      textDivs.forEach(div => div.style.color = "white"); // White on leave for text
+    }
+  };
+
   return (
-    <Container style={{ paddingTop: "50px", textAlign: "center" }}>
-      <h2 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px" }}>
-        My Technical Skills
+    <Container style={{ paddingTop: "80px", paddingBottom: "80px", textAlign: "center" }}>
+      <h2 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "60px", fontSize: "2.8rem", textShadow: "0 0 15px rgba(255, 215, 0, 0.3)" }}>
+        My Professional <strong style={{ color: "#c770f0" }}>Skillset</strong>
       </h2>
 
-      {/* Programming Languages Section */}
-      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "20px" }}>
-        Programming Languages
+      {/* Core Competencies Section */}
+      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px", fontSize: "2rem" }}>
+        Core Competencies
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        <Col xs={6} md={2} className="tech-icons">
-          {/* Python icon from an external URL */}
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" style={{ width: "50px", height: "50px" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Python
-            </Card.Title>
-          </Card.Body>
+      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}> {/* Increased gap */}
+        <Col xs={12} md={5} lg={3} className="tech-skills-item mb-4">
+          <div style={boxStyle} {...hoverEffect}>
+            <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
+              <MdLanguage style={{ color: "#d4af37", marginRight: "10px", fontSize: "1.8rem", verticalAlign: "middle" }} /> {/* Larger icon */}
+              <strong style={{ color: "#d4af37" }}>Languages:</strong> Bahasa Indonesia, English
+            </p>
+          </div>
         </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <CgCPlusPlus style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              C++
-            </Card.Title>
-          </Card.Body>
+        <Col xs={12} md={5} lg={3} className="tech-skills-item mb-4">
+          <div style={boxStyle} {...hoverEffect}>
+            <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
+              <strong style={{ color: "#d4af37" }}>Soft Skills:</strong> Communication, Collaboration, Public Speaking, Time Management
+            </p>
+          </div>
         </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <DiJavascript1 style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              JavaScript
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <FaHtml5 style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              HTML
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <FaCss3 style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              CSS
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <DiNodejs style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Node.js
-            </Card.Title>
-          </Card.Body>
+        <Col xs={12} md={5} lg={3} className="tech-skills-item mb-4">
+          <div style={boxStyle} {...hoverEffect}>
+            <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
+              <strong style={{ color: "#d4af37" }}>Marketing & Analytics:</strong> SEO (basic), Google Analytics (basic), Social Media Strategy
+            </p>
+          </div>
         </Col>
       </Row>
 
-      {/* AI/ML Frameworks & Libraries Section */}
-      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "20px" }}>
-        AI/ML Frameworks & Libraries
+      {/* Digital Tools Section */}
+      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px", fontSize: "2rem" }}>
+        Digital Tools
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        <Col xs={6} md={2} className="tech-icons">
-          <SiThealgorithms style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              TensorFlow
-            </Card.Title>
-          </Card.Body>
+      <Row style={{ justifyContent: "center", paddingBottom: "20px", gap: "30px" }}> {/* Reduced paddingBottom */}
+        <Col xs={12} md={5} lg={4} className="tech-skills-item mb-4">
+          <div style={boxStyle} {...hoverEffect}>
+            <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
+              Canva, CapCut, Adobe Photoshop
+            </p>
+          </div>
         </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <SiExpress style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              PyTorch
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <DiReact style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Scikit-learn
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <DiNodejs style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              NumPy
-            </Card.Title>
-          </Card.Body>
+        <Col xs={12} md={5} lg={4} className="tech-skills-item mb-4">
+          <div style={boxStyle} {...hoverEffect}>
+            <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
+              Microsoft Word, Excel, Google Docs
+            </p>
+          </div>
         </Col>
       </Row>
 
-      {/* Web Development Section */}
-      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "20px" }}>
-        Web Development
+      {/* Social Media Platforms Section */}
+      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "15px", fontSize: "2rem" }}> {/* Reduced marginBottom */}
+        Social Media Platforms
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        <Col xs={6} md={2} className="tech-icons">
-          <SiVite style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Vite
-            </Card.Title>
-          </Card.Body>
+      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}> {/* Increased gap */}
+        <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
+          <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
+            <IoLogoInstagram style={{ color: "#d4af37", fontSize: "3.5rem" }} /> {/* Larger icon */}
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>Instagram</div> {/* Larger text */}
+          </div>
         </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <SiTailwindcss style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Tailwind CSS
-            </Card.Title>
-          </Card.Body>
+        <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
+          <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
+            <IoLogoTiktok style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>TikTok</div>
+          </div>
         </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <DiMongodb style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              MongoDB
-            </Card.Title>
-          </Card.Body>
+        <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
+          <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
+            <IoLogoTwitter style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>Twitter</div>
+          </div>
         </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <SiDocker style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Docker
-            </Card.Title>
-          </Card.Body>
-        </Col>
-      </Row>
-
-      {/* Tools & Technologies Section */}
-      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "20px" }}>
-        Tools & Technologies
-      </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        <Col xs={6} md={2} className="tech-icons">
-          <IoLogoGithub style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              GitHub
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <DiGit style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Git
-            </Card.Title>
-          </Card.Body>
-        </Col>
-      </Row>
-
-      {/* Cybersecurity Section */}
-      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "20px" }}>
-        Cybersecurity Tools
-      </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        <Col xs={6} md={2} className="tech-icons">
-          <FaShieldAlt style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Burp Suite
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <FaShieldAlt style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              Wireshark
-            </Card.Title>
-          </Card.Body>
-        </Col>
-        <Col xs={6} md={2} className="tech-icons">
-          <FaShieldAlt style={{ color: "#d4af37", fontSize: "3rem" }} />
-          <Card.Body style={{ backgroundColor: "#2e2e2e", borderRadius: "10px" }}>
-            <Card.Title style={{ color: "#d4af37", fontWeight: "bold" }}>
-              AnyProxy
-            </Card.Title>
-          </Card.Body>
+        <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
+          <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
+            <IoLogoYoutube style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>YouTube</div>
+          </div>
         </Col>
       </Row>
     </Container>

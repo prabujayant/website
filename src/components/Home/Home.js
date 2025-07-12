@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import homeLogo from "../../Assets/home-main.svg";
+import homeLogo from "../../Assets/annis.png";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
@@ -76,7 +76,7 @@ function Home() {
                       transformOrigin: "70% 70%"
                     }}
                   >
-                    👋🏻
+                    👋
                   </span>
                 </h1>
               </div>
@@ -109,7 +109,7 @@ function Home() {
                     display: "block",
                     marginTop: "10px"
                   }}>
-                    PRABU JAYANT
+                    SITI ANNISA DAHLAN
                   </strong>
                 </h1>
                 
@@ -122,6 +122,56 @@ function Home() {
                   borderRadius: "2px",
                   animation: "slideInLeft 1s ease-out 0.6s both"
                 }}></div>
+              </div>
+
+              {/* Professional Tags */}
+              <div style={{
+                marginBottom: "30px",
+                animation: "fadeInUp 1s ease-out 0.7s both"
+              }}>
+                <div style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "15px",
+                  marginBottom: "20px"
+                }}>
+                  <span style={{
+                    background: "rgba(212, 175, 55, 0.2)",
+                    color: "#d4af37",
+                    padding: "8px 16px",
+                    borderRadius: "25px",
+                    fontSize: "0.9em",
+                    fontWeight: "500",
+                    border: "1px solid rgba(212, 175, 55, 0.3)",
+                    backdropFilter: "blur(10px)"
+                  }}>
+                    🎓 Student
+                  </span>
+                  <span style={{
+                    background: "rgba(199, 112, 240, 0.2)",
+                    color: "#c770f0",
+                    padding: "8px 16px",
+                    borderRadius: "25px",
+                    fontSize: "0.9em",
+                    fontWeight: "500",
+                    border: "1px solid rgba(199, 112, 240, 0.3)",
+                    backdropFilter: "blur(10px)"
+                  }}>
+                    📲 Digital Marketing
+                  </span>
+                  <span style={{
+                    background: "rgba(212, 175, 55, 0.2)",
+                    color: "#d4af37",
+                    padding: "8px 16px",
+                    borderRadius: "25px",
+                    fontSize: "0.9em",
+                    fontWeight: "500",
+                    border: "1px solid rgba(212, 175, 55, 0.3)",
+                    backdropFilter: "blur(10px)"
+                  }}>
+                    💡 Social Media Developer
+                  </span>
+                </div>
               </div>
 
               {/* Typing Animation Section */}
@@ -153,7 +203,7 @@ function Home() {
                 </div>
               </div>
 
-              {/* Call to Action */}
+              {/* Mission Statement */}
               <div style={{
                 marginTop: "40px",
                 animation: "fadeInUp 1s ease-out 1s both"
@@ -163,12 +213,88 @@ function Home() {
                   color: "rgba(255, 255, 255, 0.8)",
                   fontWeight: "300",
                   lineHeight: "1.6",
+                  marginBottom: "20px"
+                }}>
+                  Driven by the passion to merge <span style={{ color: "#d4af37", fontWeight: "500" }}>education</span>, 
+                  <span style={{ color: "#c770f0", fontWeight: "500" }}> creativity</span>, and 
+                  <span style={{ color: "#d4af37", fontWeight: "500" }}> digital innovation</span> to empower youth through impactful content creation.
+                </p>
+                
+                <p style={{
+                  fontSize: "1.1em",
+                  color: "rgba(255, 255, 255, 0.7)",
+                  fontWeight: "300",
+                  lineHeight: "1.6",
                   marginBottom: "30px"
                 }}>
-                  Passionate about <span style={{ color: "#d4af37", fontWeight: "500" }}>Cybersecurity</span>, 
-                  <span style={{ color: "#c770f0", fontWeight: "500" }}> AI</span>, and 
-                  <span style={{ color: "#d4af37", fontWeight: "500" }}> Innovation</span>
+                  My journey started with a love for teaching English, and evolved into expertise in digital marketing, social media management, and educational content development.
                 </p>
+              </div>
+
+              {/* Key Achievements Highlight */}
+              <div style={{
+                marginTop: "30px",
+                animation: "fadeInUp 1s ease-out 1.2s both"
+              }}>
+                <div style={{
+                  background: "rgba(199, 112, 240, 0.1)",
+                  padding: "20px 25px",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(199, 112, 240, 0.2)",
+                  backdropFilter: "blur(10px)"
+                }}>
+                  <h3 style={{
+                    color: "#c770f0",
+                    fontSize: "1.3em",
+                    fontWeight: "600",
+                    marginBottom: "15px"
+                  }}>
+                    🏆 Recent Achievements
+                  </h3>
+                  <div style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "15px"
+                  }}>
+                    <div style={{
+                      background: "rgba(212, 175, 55, 0.15)",
+                      padding: "10px 15px",
+                      borderRadius: "8px",
+                      fontSize: "0.9em",
+                      color: "#fff"
+                    }}>
+                      🥉 3rd Place - Kalla Youth Fest Hackathon 2024
+                    </div>
+                    <div style={{
+                      background: "rgba(199, 112, 240, 0.15)",
+                      padding: "10px 15px",
+                      borderRadius: "8px",
+                      fontSize: "0.9em",
+                      color: "#fff"
+                    }}>
+                      🏅 Top 150 Essay - Andalas University
+                    </div>
+                    <div style={{
+                      background: "rgba(212, 175, 55, 0.15)",
+                      padding: "10px 15px",
+                      borderRadius: "8px",
+                      fontSize: "0.9em",
+                      color: "#fff"
+                    }}>
+                      🥉 Bronze Medal - National Language Olympiad
+                    </div>
+                    <div style={{
+                      background: "rgba(199, 112, 240, 0.15)",
+                      padding: "10px 15px",
+                      borderRadius: "8px",
+                      fontSize: "0.9em",
+                      color: "#fff",
+                      textAlign: "center" // Added this line to center the text
+                    }}>
+                      🎓 PMM4 Student Exchange Awardee
+                    </div>
+                  </div>
+                </div>
               </div>
             </Col>
 
@@ -215,7 +341,7 @@ function Home() {
 
                 <img
                   src={homeLogo}
-                  alt="home pic"
+                  alt="Siti Annisa Dahlan"
                   className="img-fluid"
                   style={{ 
                     maxHeight: "450px",
@@ -338,6 +464,10 @@ function Home() {
           
           .home-content {
             padding-top: 20px !important;
+          }
+
+          .main-name {
+            font-size: 2.8em !important;
           }
         }
       `}</style>

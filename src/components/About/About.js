@@ -1,15 +1,15 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
-import Github from "./Github";
+// Removed: import Github from "./Github";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
-import laptopImg from "../../Assets/about.png";
+import laptopImg from "../../Assets/about1.jpg";
 import Toolstack from "./Toolstack";
 
 function About() {
   return (
-    <section style={{ 
+    <section style={{
       background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)",
       minHeight: "100vh",
       position: "relative",
@@ -22,7 +22,7 @@ function About() {
         zIndex: 1
       }}>
         <Particle />
-        
+
         {/* Floating geometric shapes for visual interest */}
         <div style={{
           position: "absolute",
@@ -36,7 +36,7 @@ function About() {
           animation: "float 7s ease-in-out infinite",
           zIndex: 0
         }}></div>
-        
+
         <div style={{
           position: "absolute",
           bottom: "25%",
@@ -51,7 +51,7 @@ function About() {
         }}></div>
 
         <Container style={{ position: "relative", zIndex: 1 }}>
-          <Row style={{ 
+          <Row style={{
             minHeight: "85vh",
             alignItems: "center",
             justifyContent: "center"
@@ -96,7 +96,7 @@ function About() {
                       I'M
                     </strong>
                   </h1>
-                  
+
                   {/* Animated underline */}
                   <div style={{
                     position: "absolute",
@@ -120,19 +120,19 @@ function About() {
                   lineHeight: "1.6",
                   animation: "fadeIn 1s ease-out 1.5s both"
                 }}>
-                  Passionate Developer & Creative Thinker
+                  Creative Educator & Digital Innovator
                 </p>
               </div>
 
               {/* About Card */}
-              <div style={{ 
+              <div style={{
                 animation: "fadeInUp 1s ease-out 0.8s both"
               }}>
                 <Aboutcard />
               </div>
             </Col>
 
-            <Col md={5} style={{ 
+            <Col md={5} style={{
               paddingBottom: "20px",
               display: "flex",
               justifyContent: "center",
@@ -157,7 +157,7 @@ function About() {
                   transform: "rotate(-2deg)",
                   animation: "pulse 4s ease-in-out infinite"
                 }}></div>
-                
+
                 <div style={{
                   position: "absolute",
                   top: "-15px",
@@ -170,7 +170,7 @@ function About() {
                   transform: "rotate(3deg)",
                   animation: "pulse 4s ease-in-out infinite 1.5s"
                 }}></div>
-                
+
                 <div style={{
                   position: "relative",
                   overflow: "hidden",
@@ -199,7 +199,7 @@ function About() {
                       display: "block"
                     }}
                   />
-                  
+
                   {/* Overlay gradient */}
                   <div style={{
                     position: "absolute",
@@ -220,7 +220,7 @@ function About() {
           </Row>
         </Container>
       </Container>
-      
+
       {/* Skills and Tools Sections */}
       <div style={{
         position: "relative",
@@ -231,11 +231,11 @@ function About() {
         {/* Enhanced Section Headers Component */}
         {[
           { title: "Professional", highlight: "Skillset", component: <Techstack /> },
-          { title: "", highlight: "Tools", subtitle: "I Use", component: <Toolstack /> },
-          { title: "Days I", highlight: "Code", component: <Github /> }
+          { title: "", highlight: "Tools", subtitle: "I Use", component: <Toolstack /> }
+          // Removed: { title: "Days I", highlight: "Code", component: <Github /> }
         ].map((section, index) => (
-          <div key={index} style={{ 
-            paddingTop: "80px", 
+          <div key={index} style={{
+            paddingTop: "80px",
             paddingBottom: "60px",
             position: "relative"
           }}>
@@ -251,15 +251,15 @@ function About() {
               borderRadius: "50%",
               zIndex: -1
             }}></div>
-            
+
             <Container style={{ position: "relative", zIndex: 1 }}>
-              <div style={{ 
-                textAlign: "center", 
+              <div style={{
+                textAlign: "center",
                 marginBottom: "60px",
                 animation: "fadeInUp 0.8s ease-out"
               }}>
                 <div style={{ position: "relative", display: "inline-block" }}>
-                  <h1 style={{ 
+                  <h1 style={{
                     fontSize: "clamp(2.2rem, 4vw, 3.2rem)",
                     background: "linear-gradient(45deg, #ffffff, #f0f0f0)",
                     WebkitBackgroundClip: "text",
@@ -270,7 +270,7 @@ function About() {
                     textShadow: "none",
                     letterSpacing: "1px"
                   }}>
-                    {section.title} <strong style={{ 
+                    {section.title} <strong style={{
                       background: "linear-gradient(45deg, #c770f0, #d4af37, #4ecdc4)",
                       backgroundSize: "200% 200%",
                       WebkitBackgroundClip: "text",
@@ -279,7 +279,7 @@ function About() {
                       animation: "gradientShift 3s ease infinite"
                     }}>{section.highlight}</strong> {section.subtitle}
                   </h1>
-                  
+
                   {/* Animated decorative line */}
                   <div style={{
                     width: "120px",
@@ -290,7 +290,7 @@ function About() {
                     borderRadius: "2px",
                     animation: "gradientSlide 2s ease infinite"
                   }}></div>
-                  
+
                   {/* Decorative dots */}
                   <div style={{
                     display: "flex",
@@ -310,7 +310,7 @@ function About() {
                   </div>
                 </div>
               </div>
-              
+
               <div style={{ animation: `fadeInUp 0.8s ease-out ${0.2 + index * 0.1}s both` }}>
                 {section.component}
               </div>
@@ -331,7 +331,7 @@ function About() {
             transform: translateY(0);
           }
         }
-        
+
         @keyframes fadeInRight {
           from {
             opacity: 0;
@@ -342,33 +342,33 @@ function About() {
             transform: translateX(0);
           }
         }
-        
+
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        
+
         @keyframes expandWidth {
           from { width: 0%; }
           to { width: 100%; }
         }
-        
+
         @keyframes gradientShift {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-        
+
         @keyframes gradientSlide {
           0% { background-position: 0% 0%; }
           100% { background-position: 200% 0%; }
         }
-        
+
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-25px) rotate(3deg); }
         }
-        
+
         @keyframes pulse {
           0%, 100% { opacity: 0.5; transform: scale(1); }
           50% { opacity: 0.8; transform: scale(1.02); }
@@ -381,17 +381,17 @@ function About() {
             padding-top: 30px !important;
           }
         }
-        
+
         @media (max-width: 768px) {
           .about-section h1 {
             font-size: 2.2rem !important;
           }
-          
+
           .about-section {
             padding-top: 50px !important;
           }
         }
-        
+
         @media (max-width: 576px) {
           .about-section h1 {
             font-size: 1.8rem !important;
