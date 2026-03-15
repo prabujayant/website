@@ -54,49 +54,48 @@ function Techstack() {
 
       {/* Core Competencies Section */}
       <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px", fontSize: "2rem" }}>
-        Core Competencies
+        UX & Design Competencies
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}> {/* Increased gap */}
+      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}>
         <Col xs={12} md={5} lg={3} className="tech-skills-item mb-4">
           <div style={boxStyle} {...hoverEffect}>
             <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
-              <MdLanguage style={{ color: "#d4af37", marginRight: "10px", fontSize: "1.8rem", verticalAlign: "middle" }} /> {/* Larger icon */}
-              <strong style={{ color: "#d4af37" }}>Languages:</strong> Bahasa Indonesia, English
+              <strong style={{ color: "#d4af37" }}>UX Research:</strong> User Interviews, Qualitative Analysis, Usability Testing, Pain Point Synthesis
             </p>
           </div>
         </Col>
         <Col xs={12} md={5} lg={3} className="tech-skills-item mb-4">
           <div style={boxStyle} {...hoverEffect}>
             <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
-              <strong style={{ color: "#d4af37" }}>Soft Skills:</strong> Communication, Collaboration, Public Speaking, Time Management
+              <strong style={{ color: "#d4af37" }}>UI/UX Design:</strong> Wireframing, Prototyping, Information Architecture, User-Centered Design
             </p>
           </div>
         </Col>
         <Col xs={12} md={5} lg={3} className="tech-skills-item mb-4">
           <div style={boxStyle} {...hoverEffect}>
             <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
-              <strong style={{ color: "#d4af37" }}>Marketing & Analytics:</strong> SEO (basic), Google Analytics (basic), Social Media Strategy
+              <strong style={{ color: "#d4af37" }}>Tech & Web:</strong> HTML/CSS/JS, Responsive Web Design, Performance Optimization
             </p>
           </div>
         </Col>
       </Row>
 
-      {/* Digital Tools Section */}
+      {/* Modern Workflow Section */}
       <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px", fontSize: "2rem" }}>
-        Digital Tools
+        Process & Communication
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "20px", gap: "30px" }}> {/* Reduced paddingBottom */}
+      <Row style={{ justifyContent: "center", paddingBottom: "20px", gap: "30px" }}>
         <Col xs={12} md={5} lg={4} className="tech-skills-item mb-4">
           <div style={boxStyle} {...hoverEffect}>
             <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
-              Canva, CapCut, Adobe Photoshop
+              <strong style={{ color: "#d4af37" }}>Tools:</strong> Figma, Canva, Adobe Photoshop, Microsoft 365 Copilot
             </p>
           </div>
         </Col>
         <Col xs={12} md={5} lg={4} className="tech-skills-item mb-4">
           <div style={boxStyle} {...hoverEffect}>
             <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
-              Microsoft Word, Excel, Google Docs
+              <strong style={{ color: "#d4af37" }}>Collaboration:</strong> Notion, Slack, Google Workspace, Project Management
             </p>
           </div>
         </Col>

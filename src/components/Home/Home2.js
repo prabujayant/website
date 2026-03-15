@@ -33,9 +33,9 @@ function Home() {
   ];
 
   const socialLinks = [
-    { icon: Mail, url: "mailto:sitiannisadahlan@email.com", color: "#ea4335" },
+    { icon: Mail, url: "mailto:sitiannisadahlan50@gmail.com", color: "#ea4335" },
     { icon: Linkedin, url: "https://linkedin.com/in/siti-annisa-dahlan", color: "#0077b5" },
-    { icon: Instagram, url: "https://instagram.com/sitiannisadahlan", color: "#e4405f" }
+    { icon: Instagram, url: "https://instagram.com/an_nzaaa", color: "#e4405f" }
   ];
 
   return (
@@ -128,13 +128,13 @@ function Home() {
                 marginBottom: "0",
                 textAlign: "left"
               }}>
-                I am driven by the passion to merge education, creativity, and digital innovation to empower youth through impactful content creation. My journey started with a love for teaching English, which quickly transformed into expertise in digital marketing and social media development.
+                I am an <span style={{color: "#ffd700", fontWeight: "600"}}>Aspiring HCI/UI/UX Researcher and Designer</span> with hands-on experience in user research, wireframing, and user-centered design. I'm passionate about synthesizing insights and translating findings into actionable design solutions.
                 <br /><br />
-                Throughout my academic and professional journey, I've honed my skills in <span style={{color: "#ffd700", fontWeight: "600"}}>digital marketing, content creation, social media management, and educational material development</span>. I've taken on leadership roles in various projects where I guided teams to create engaging digital experiences.
+                Throughout my academic and professional journey, I've honed my skills in <span style={{color: "#ffd700", fontWeight: "600"}}>UX research, prototyping, and responsive web development</span>. I've taken on leadership roles in international events and student exchange programs, where I bridged the gap between diverse stakeholders and digital platforms.
                 <br /><br />
-                I lead with intention, always striving to make educational experiences more accessible through <span style={{color: "#ffd700", fontWeight: "600"}}>creative digital tools, community engagement, and innovative content strategies</span>. My work spans from developing educational websites and digital books to managing social media campaigns and creating video content for students.
+                I lead with intention, always striving to make digital experiences more accessible through <span style={{color: "#ffd700", fontWeight: "600"}}>user-centered principles and creative innovation</span>. My work spans from developing academic management prototypes like TaskFlow to building gamified reading platforms and educational blogs.
                 <br /><br />
-                My belief is simple: <span style={{color: "#ffd700", fontWeight: "600"}}>true impact comes from making learning dynamic, inclusive, and inspiring through digital innovation</span>. I'm committed to empowering others through education and creative digital storytelling.
+                My belief is simple: <span style={{color: "#ffd700", fontWeight: "600"}}>true impact comes from deeply understanding user needs and crafting intuitive digital solutions</span> that empower communities. I'm committed to the intersection of education, technology, and human-computer interaction.
               </p>
             </div>
           </div>

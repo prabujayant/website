@@ -56,33 +56,30 @@ function Projects() {
             flexWrap: "wrap", // Allow cards to wrap on smaller screens
           }}
         >
-          <Col md={4} className="project-card d-flex justify-content-center"> {/* Center card in column */}
+          <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
               isBlog={false}
-              title="Digital English Book (Book Creator)"
-              description="A collaborative project featuring student-generated English texts, visual, and speaking and listening activities helps students especially in junior high school."
-              demoLink="https://read.bookcreator.com/kWWJwNINR0dg7GPkPfi4sdGpygH2/99UftvSAQ4yveIKrRaXmVw" // Updated link
+              title="TaskFlow — Academic Deadline Management"
+              description="Responsive web prototype built to solve cognitive overload for students. Conducted research with 8 participants to identify pain points and designed a streamlined 4-screen flow reducing tracking friction by 40%."
+              demoLink="https://sitiannisa.vercel.app" // Placeholder/Main URL as per content
             />
           </Col>
 
           <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
               isBlog={false}
-              title="Teaching & Tutorial Videos (Padlet)"
-              description="Recorded classroom tutorials and educational video content designed for young learners and beginner English students."
-              viewLink="https://www.youtube.com/@sitiannisadahlan241" // Please update this with the correct YouTube/Padlet link
-            />
-          </Col>
-
-          <Col md={4} className="project-card d-flex justify-content-center">
-            <ProjectCard
-              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
-              isBlog={false}
-              title="Think Ink Website"
-              description="A reading platform built using Weebly to help junior high school students enhance their reading comprehension."
+              title="Think Ink — Gamified Reading Platform"
+              description="A responsive gamified reading platform applying minimalist UI principles and user-centered information architecture. Features progress tracking and visual rewards for a 30% retention improvement."
               demoLink="https://thinkinkreading2025.weebly.com"
+            />
+          </Col>
+
+          <Col md={4} className="project-card d-flex justify-content-center">
+            <ProjectCard
+              isBlog={true}
+              title="ReadingWithAnnis — Book Review Blog"
+              description="Independently developed book review blog achieving a 90+ Lighthouse score. Applied UI/UX best practices like typography contrast and whitespace to reduce reading friction by 25%."
+              demoLink="https://readingwithannis.vercel.app"
             />
           </Col>
         </Row>
@@ -91,28 +88,26 @@ function Projects() {
           style={{
             justifyContent: "center",
             paddingBottom: "10px",
-            gap: "30px", // Add gap between project cards for better spacing
+            gap: "30px",
             display: "flex",
             flexWrap: "wrap",
           }}
         >
           <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
-              isBlog={true} // Set to true as it's a blog
-              title="Explore With Annis – Exchange Program Blog"
-              description="Blogging reflections, travel experiences, and academic growth during my PMM4 student exchange."
-              demoLink="https://explorewithannis.weebly.com"
+              isBlog={false}
+              title="Digital English Book (Book Creator)"
+              description="A collaborative project featuring student-generated English texts and listening activities, designed to enhance learning outcomes for junior high school students."
+              demoLink="https://read.bookcreator.com/kWWJwNINR0dg7GPkPfi4sdGpygH2/99UftvSAQ4yveIKrRaXmVw"
             />
           </Col>
 
           <Col md={4} className="project-card d-flex justify-content-center">
             <ProjectCard
-              // imgPath={placeholderImg} /* Removed imgPath as per user's request */
-              isBlog={true} // Set to true as it's a blog
-              title="Useful Information Blog"
-              description="A personal blog for sharing useful information and insights."
-              demoLink="https://sitiannisadahlan.blogspot.com/"
+              isBlog={true}
+              title="Explore With Annis – Exchange Blog"
+              description="Documenting reflections and cultural growth during the PMM4 student exchange program, providing insights into international academic experiences."
+              demoLink="https://explorewithannis.weebly.com"
             />
           </Col>
           {/* Add more projects here as needed, following the structure */}

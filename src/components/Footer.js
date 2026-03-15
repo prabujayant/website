@@ -7,7 +7,7 @@ function Footer() {
   let year = date.getFullYear();
   
   const socialLinks = [
-    { icon: Linkedin, url: "https://www.linkedin.com/in/sitiannisadahlan", color: "#0077b5" },
+    { icon: Linkedin, url: "https://linkedin.com/in/siti-annisa-dahlan", color: "#0077b5" },
     { icon: Instagram, url: "https://www.instagram.com/an_nzaaa?igsh=NzYzcmt3cDE1YzVo", color: "#e4405f" },
     { icon: Mail, url: "mailto:sitiannisadahlan50@gmail.com", color: "#bb001b" },
     { icon: IoLogoTiktok, url: "https://www.tiktok.com/@anotherpageunlocked_?is_from_webapp=1&sender_device=pc", color: "#69C9D0" },
