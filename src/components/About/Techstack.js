@@ -1,9 +1,6 @@
 import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import {
-  MdLanguage
-} from "react-icons/md";
-import {
   IoLogoInstagram, IoLogoTiktok, IoLogoTwitter, IoLogoYoutube
 } from "react-icons/io5";
 
