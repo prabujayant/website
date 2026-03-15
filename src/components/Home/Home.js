@@ -129,7 +129,7 @@ function Home() {
                 marginBottom: "30px",
                 animation: "fadeInUp 1s ease-out 0.7s both"
               }}>
-                <div style={{
+                <div className="home-tags" style={{
                   display: "flex",
                   flexWrap: "wrap",
                   gap: "15px",
@@ -145,7 +145,7 @@ function Home() {
                     border: "1px solid rgba(212, 175, 55, 0.3)",
                     backdropFilter: "blur(10px)"
                   }}>
-                    🎓 Student
+                    🎓 HCI Researcher
                   </span>
                   <span style={{
                     background: "rgba(199, 112, 240, 0.2)",
@@ -157,7 +157,7 @@ function Home() {
                     border: "1px solid rgba(199, 112, 240, 0.3)",
                     backdropFilter: "blur(10px)"
                   }}>
-                    📲 Digital Marketing
+                    🎨 UI/UX Designer
                   </span>
                   <span style={{
                     background: "rgba(212, 175, 55, 0.2)",
@@ -169,13 +169,13 @@ function Home() {
                     border: "1px solid rgba(212, 175, 55, 0.3)",
                     backdropFilter: "blur(10px)"
                   }}>
-                    💡 Social Media Developer
+                    📖 English Educator
                   </span>
                 </div>
               </div>
 
               {/* Typing Animation Section */}
-              <div style={{ 
+              <div className="typewriter-container" style={{ 
                 padding: "30px 0",
                 textAlign: "left",
                 animation: "fadeInUp 1s ease-out 0.8s both"
@@ -216,8 +216,8 @@ function Home() {
                   marginBottom: "20px"
                 }}>
                   Driven by the passion to merge <span style={{ color: "#d4af37", fontWeight: "500" }}>education</span>, 
-                  <span style={{ color: "#c770f0", fontWeight: "500" }}> creativity</span>, and 
-                  <span style={{ color: "#d4af37", fontWeight: "500" }}> digital innovation</span> to empower youth through impactful content creation.
+                  <span style={{ color: "#c770f0", fontWeight: "500" }}> technology</span>, and 
+                  <span style={{ color: "#d4af37", fontWeight: "500" }}> user-centered design</span> to empower communities through digital innovation.
                 </p>
                 
                 <p style={{
@@ -227,7 +227,7 @@ function Home() {
                   lineHeight: "1.6",
                   marginBottom: "30px"
                 }}>
-                  My journey started with a love for teaching English, and evolved into expertise in digital marketing, social media management, and educational content development.
+                  My journey bridge's the gap between English pedagogy and specialized expertise in HCI research and UI/UX prototyping.
                 </p>
               </div>
 
@@ -236,7 +236,7 @@ function Home() {
                 marginTop: "30px",
                 animation: "fadeInUp 1s ease-out 1.2s both"
               }}>
-                <div style={{
+                <div className="achievement-highlight-box" style={{
                   background: "rgba(199, 112, 240, 0.1)",
                   padding: "20px 25px",
                   borderRadius: "12px",
@@ -251,7 +251,7 @@ function Home() {
                   }}>
                     🏆 Recent Achievements
                   </h3>
-                  <div style={{
+                  <div className="achievement-highlight-list" style={{
                     display: "flex",
                     flexWrap: "wrap",
                     gap: "15px"
@@ -459,7 +459,7 @@ function Home() {
           }
           
           .heading-name {
-            font-size: 2.5em !important;
+            font-size: 2.2em !important;
           }
           
           .home-content {
@@ -467,7 +467,24 @@ function Home() {
           }
 
           .main-name {
-            font-size: 2.8em !important;
+            font-size: 2.5em !important;
+            margin: 0 auto !important;
+          }
+
+          .home-tags {
+            justify-content: center !important;
+          }
+
+          .typewriter-container {
+            text-align: center !important;
+          }
+
+          .achievement-highlight-box {
+            text-align: center !important;
+          }
+
+          .achievement-highlight-list {
+            justify-content: center !important;
           }
         }
       `}</style>

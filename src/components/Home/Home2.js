@@ -86,7 +86,7 @@ function Home() {
         zIndex: 2,
         fontFamily: "'Inter', sans-serif"
       }}>
-        <div style={{
+        <div className="grid-container" style={{
           display: "grid",
           gridTemplateColumns: "2fr 1fr",
           gap: "60px",
@@ -258,14 +258,15 @@ function Home() {
             🏆 ACHIEVEMENTS & AWARDS
           </h2>
           
-          <div style={{ 
-            display: "flex", // Changed from "grid" to "flex"
-            flexWrap: "nowrap", // Added to ensure items stay in one line
+          <div className="achievement-container" style={{ 
+            display: "flex",
+            flexWrap: "nowrap",
             gap: "30px",
-            padding: "0 20px",
-            overflowX: "auto", // Added for horizontal scrolling if content overflows
-            scrollbarWidth: "thin", // For Firefox
-            scrollbarColor: "rgba(255, 215, 0, 0.5) transparent" // For Firefox
+            padding: "20px 0", // Adjusted padding
+            overflowX: "auto",
+            scrollbarWidth: "thin",
+            scrollbarColor: "rgba(255, 215, 0, 0.5) transparent",
+            WebkitOverflowScrolling: "touch" // Smooth scrolling on iOS
           }}>
             {/* Custom scrollbar for Webkit browsers */}
             <style>{`
@@ -283,6 +284,7 @@ function Home() {
             {achievements.map((achievement, index) => (
               <div
                 key={index}
+                className="achievement-card"
                 style={{
                   background: hoveredCard === index 
                     ? achievement.gradient 
@@ -300,8 +302,8 @@ function Home() {
                   cursor: "pointer",
                   position: "relative",
                   overflow: "hidden",
-                  minWidth: "300px", // Ensure minimum width for each card
-                  flexShrink: 0 // Prevent cards from shrinking
+                  minWidth: "300px",
+                  flexShrink: 0
                 }}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -446,11 +448,22 @@ function Home() {
           100% { transform: translateY(-100px) scale(0); opacity: 0; }
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
           .grid-container {
             grid-template-columns: 1fr !important;
-            gap: 30px !important;
+            gap: 40px !important;
+            text-align: center !important;
           }
+          .achievement-container {
+             gap: 20px !important;
+          }
+        }
+        
+        @media (max-width: 768px) {
+           .achievement-card {
+             min-width: 260px !important;
+             padding: 20px !important;
+           }
         }
       `}</style>
     </div>
