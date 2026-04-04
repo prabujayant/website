@@ -190,7 +190,7 @@ function About() {
                 }}>
                   <img
                     src={laptopImg}
-                    alt="about"
+                    alt="Siti Annisa Dahlan - About section portrait"
                     className="img-fluid"
                     style={{
                       borderRadius: "20px",

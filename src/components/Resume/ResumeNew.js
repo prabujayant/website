@@ -16,28 +16,18 @@ function ResumeNew() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "black", color: "white" }}>
-      <Container fluid className="resume-section">
+    <div className="resume-section">
+      <Container fluid>
         <Particle />
         <Row style={{ justifyContent: "center", position: "relative" }}>
           <Button
             variant="outline-warning"
             href={pdf}
             target="_blank"
-            style={{
-              maxWidth: "250px",
-              borderRadius: "25px",
-              padding: "12px 20px",
-              fontSize: "1.1em",
-              fontWeight: "600",
-              borderColor: "#d4af37",
-              color: "#d4af37",
-              transition: "background-color 0.3s ease, color 0.3s ease",
-            }}
             className="download-button"
           >
             <AiOutlineDownload />
-            &nbsp;Download CV
+            Download CV
           </Button>
         </Row>
 
@@ -52,20 +42,10 @@ function ResumeNew() {
             variant="outline-warning"
             href={pdf}
             target="_blank"
-            style={{
-              maxWidth: "250px",
-              borderRadius: "25px",
-              padding: "12px 20px",
-              fontSize: "1.1em",
-              fontWeight: "600",
-              borderColor: "#d4af37",
-              color: "#d4af37",
-              transition: "background-color 0.3s ease, color 0.3s ease",
-            }}
             className="download-button"
           >
             <AiOutlineDownload />
-            &nbsp;Download CV
+            Download CV
           </Button>
         </Row>
       </Container>

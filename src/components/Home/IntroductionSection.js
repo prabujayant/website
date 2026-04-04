@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SOCIAL_LINKS, HOME_ACHIEVEMENTS } from "../../Constants";
 
-function Home2() {
+function IntroductionSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -12,51 +12,51 @@ function Home2() {
   const topSocialLinks = SOCIAL_LINKS.slice(0, 3);
 
   return (
-    <section className="home2-section">
+    <section className="intro-section-container">
       {/* Animated Background Elements */}
-      <div className="home2-bg-gradient"></div>
+      <div className="intro-bg-gradient"></div>
       
       {/* Floating Particles */}
       {[...Array(15)].map((_, i) => (
         <div
           key={i}
-          className="floating-particle"
+          className="intro-floating-particle"
           style={{
             width: Math.random() * 10 + 5 + "px",
             height: Math.random() * 10 + 5 + "px",
             left: Math.random() * 100 + "%",
             top: Math.random() * 100 + "%",
             animation: `float ${3 + Math.random() * 4}s linear infinite`,
-            opacity: 0.5
+            opacity: 0.3
           }}
         />
       ))}
 
-      <div className="home2-container">
-        {/* Introduction Section */}
-        <div className="home2-grid">
-          <div className={`home2-intro-section ${isVisible ? "visible" : ""}`}>
-            <h1 className="intro-title">
+      <div className="intro-main-container">
+        {/* Introduction Grid */}
+        <div className="intro-grid">
+          <div className={`intro-text-section ${isVisible ? "visible" : ""}`}>
+            <h2 className="intro-section-title">
               LET ME <span className="intro-title-highlight">INTRODUCE</span> MYSELF
-            </h1>
+            </h2>
             
-            <div className="intro-box">
-              <p className="intro-text">
-                I am an <span className="intro-text-highlight">Aspiring HCI/UI/UX Researcher and Designer</span> with hands-on experience in user research, wireframing, and user-centered design. I'm passionate about synthesizing insights and translating findings into actionable design solutions.
+            <div className="intro-content-box">
+              <p className="intro-body-text">
+                I am an <span className="intro-highlight">Aspiring HCI/UI/UX Researcher and Designer</span> with hands-on experience in user research, wireframing, and user-centered design. I'm passionate about synthesizing insights and translating findings into actionable design solutions.
                 <br /><br />
-                Throughout my academic and professional journey, I've honed my skills in <span className="intro-text-highlight">UX research, prototyping, and responsive web development</span>. I've taken on leadership roles in international events and student exchange programs, where I bridged the gap between diverse stakeholders and digital platforms.
+                Throughout my academic and professional journey, I've honed my skills in <span className="intro-highlight">UX research, prototyping, and responsive web development</span>. I've taken on leadership roles in international events and student exchange programs, where I bridged the gap between diverse stakeholders and digital platforms.
                 <br /><br />
-                I lead with intention, always striving to make digital experiences more accessible through <span className="intro-text-highlight">user-centered principles and creative innovation</span>. My work spans from developing academic management prototypes like TaskFlow to building gamified reading platforms and educational blogs.
+                I lead with intention, always striving to make digital experiences more accessible through <span className="intro-highlight">user-centered principles and creative innovation</span>. My work spans from developing academic management prototypes like TaskFlow to building gamified reading platforms and educational blogs.
                 <br /><br />
-                My belief is simple: <span className="intro-text-highlight">true impact comes from deeply understanding user needs and crafting intuitive digital solutions</span> that empower communities. I'm committed to the intersection of education, technology, and human-computer interaction.
+                My belief is simple: <span className="intro-highlight">true impact comes from deeply understanding user needs and crafting intuitive digital solutions</span> that empower communities. I'm committed to the intersection of education, technology, and human-computer interaction.
               </p>
             </div>
           </div>
           
           {/* Avatar Section */}
-          <div className={`home2-avatar-section ${isVisible ? "visible" : ""}`}>
+          <div className={`intro-avatar-section ${isVisible ? "visible" : ""}`}>
             <div
-              className="home2-avatar-wrapper"
+              className="intro-avatar-wrapper"
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "perspective(1000px) rotateY(0deg) scale(1.05)";
               }}
@@ -68,33 +68,25 @@ function Home2() {
                 transition: "transform 0.3s ease"
               }}
             >
-              <div className="home2-avatar-border">
-                <div className="home2-avatar-content">
+              <div className="intro-avatar-border">
+                <div className="intro-avatar-content">
                   👩‍🎓
                 </div>
               </div>
               
-              {/* Floating Elements around Avatar */}
-              <div className="home2-floating-element top-right">
-                📚
-              </div>
-              
-              <div className="home2-floating-element bottom-left">
-                ✨
-              </div>
-              
-              <div className="home2-floating-element middle-right">
-                🌟
-              </div>
+              {/* Floating Elements */}
+              <div className="intro-floating-icon top-right">📚</div>
+              <div className="intro-floating-icon bottom-left">✨</div>
+              <div className="intro-floating-icon middle-right">🌟</div>
             </div>
           </div>
         </div>
 
         {/* Achievements Section */}
-        <div className="achievements-section">
-          <h2 className="achievements-title">🏆 ACHIEVEMENTS & AWARDS</h2>
+        <article className="achievements-article">
+          <h2 className="achievements-article-title">🏆 ACHIEVEMENTS & AWARDS</h2>
           
-          <div className="achievement-container">
+          <div className="achievements-carousel">
             {HOME_ACHIEVEMENTS.map((achievement, index) => (
               <div
                 key={index}
@@ -107,7 +99,6 @@ function Home2() {
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                {/* Animated background effect */}
                 <div style={{
                   position: "absolute",
                   top: 0,
@@ -120,9 +111,9 @@ function Home2() {
                 }} />
                 
                 <div style={{ position: "relative", zIndex: 1 }}>
-                  <h4 className="achievement-card-title">
+                  <h3 className="achievement-card-title">
                     {achievement.title}
-                  </h4>
+                  </h3>
                   <p className="achievement-card-description">
                     {achievement.description}
                   </p>
@@ -130,16 +121,16 @@ function Home2() {
               </div>
             ))}
           </div>
-        </div>
+        </article>
 
         {/* Connect Section */}
-        <div className="connect-section">
-          <h1 className="connect-title">🌐 FIND ME ON</h1>
-          <p className="connect-subtitle">
-            Feel free to <span className="connect-subtitle-highlight">connect</span> with me on these platforms:
+        <section className="connect-section">
+          <h2 className="connect-section-title">🌐 FIND ME ON</h2>
+          <p className="connect-section-subtitle">
+            Feel free to <span className="connect-highlight">connect</span> with me on these platforms:
           </p>
           
-          <div className="social-links-container">
+          <div className="social-links-grid">
             {topSocialLinks.map((social) => {
               const IconComponent = social.icon;
               return (
@@ -149,6 +140,7 @@ function Home2() {
                   target="_blank"
                   rel="noreferrer"
                   className="social-link-btn"
+                  aria-label={`Connect on ${social.id}`}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = social.color;
                     e.currentTarget.style.boxShadow = `0 15px 30px ${social.color}40`;
@@ -163,7 +155,7 @@ function Home2() {
               );
             })}
           </div>
-        </div>
+        </section>
       </div>
 
       <style>{`
@@ -209,4 +201,4 @@ function Home2() {
   );
 }
 
-export default Home2;
+export default IntroductionSection;

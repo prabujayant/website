@@ -31,18 +31,10 @@ function NavBar() {
       fixed="top"
       expand="md"
       className={navColour ? "sticky" : "navbar"}
-      style={{
-        backgroundColor: navColour ? "#2a1a4a" : "transparent",
-        transition: "all 0.3s ease-in-out",
-      }}
     >
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex">
-          <span style={{ 
-            color: "#8b5cf6", 
-            fontSize: "1.5rem", 
-            fontWeight: "bold" 
-          }}>
+          <span className="navbar-brand-text">
             Portfolio
           </span>
         </Navbar.Brand>
@@ -63,13 +55,9 @@ function NavBar() {
                 as={Link}
                 to="/"
                 onClick={() => updateExpanded(false)}
-                style={{
-                  color: navColour ? "#8b5cf6" : "#fff",
-                  fontSize: "1.1em",
-                  transition: "color 0.3s ease",
-                }}
+                className="nav-link"
               >
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+                <AiOutlineHome /> Home
               </Nav.Link>
             </Nav.Item>
 
@@ -78,13 +66,9 @@ function NavBar() {
                 as={Link}
                 to="/about"
                 onClick={() => updateExpanded(false)}
-                style={{
-                  color: navColour ? "#8b5cf6" : "#fff",
-                  fontSize: "1.1em",
-                  transition: "color 0.3s ease",
-                }}
+                className="nav-link"
               >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
+                <AiOutlineUser /> About
               </Nav.Link>
             </Nav.Item>
 
@@ -93,13 +77,9 @@ function NavBar() {
                 as={Link}
                 to="/project"
                 onClick={() => updateExpanded(false)}
-                style={{
-                  color: navColour ? "#8b5cf6" : "#fff",
-                  fontSize: "1.1em",
-                  transition: "color 0.3s ease",
-                }}
+                className="nav-link"
               >
-                <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} />{" "}
+                <AiOutlineFundProjectionScreen />{" "}
                 Projects
               </Nav.Link>
             </Nav.Item>
@@ -109,13 +89,9 @@ function NavBar() {
                 as={Link}
                 to="/resume"
                 onClick={() => updateExpanded(false)}
-                style={{
-                  color: navColour ? "#8b5cf6" : "#fff",
-                  fontSize: "1.1em",
-                  transition: "color 0.3s ease",
-                }}
+                className="nav-link"
               >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+                <CgFileDocument /> Resume
               </Nav.Link>
             </Nav.Item>
 
