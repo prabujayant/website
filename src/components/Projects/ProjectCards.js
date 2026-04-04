@@ -247,7 +247,7 @@ function ProjectCards(props) {
             </Button>
           )}
 
-          {props.demoLink && (
+                    {props.demoLink && (
             <Button
               variant="outline-warning"
               href={props.demoLink}
@@ -281,7 +281,7 @@ function ProjectCards(props) {
               }}
             >
               <CgWebsite style={{ marginRight: "10px", fontSize: "1.1em" }} />
-              Demo
+              {props.customButtonText || "Demo"}
             </Button>
           )}
 

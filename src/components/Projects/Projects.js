@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-// Removed image imports as per user's request
+import { PROJECTS_DATA } from "../../Constants";
 
 function Projects() {
   return (
@@ -47,7 +47,7 @@ function Projects() {
         >
           Here are a few projects I've worked on recently.
         </p>
-        <Row
+                <Row
           style={{
             justifyContent: "center",
             paddingBottom: "10px",
@@ -56,61 +56,24 @@ function Projects() {
             flexWrap: "wrap", // Allow cards to wrap on smaller screens
           }}
         >
-          <Col md={4} className="project-card d-flex justify-content-center">
-            <ProjectCard
-              isBlog={false}
-              title="TaskFlow — Academic Deadline Management"
-              description="Responsive web prototype built to solve cognitive overload for students. Conducted research with 8 participants to identify pain points and designed a streamlined 4-screen flow reducing tracking friction by 40%."
-              demoLink="https://sitiannisa.vercel.app" // Placeholder/Main URL as per content
-            />
-          </Col>
-
-          <Col md={4} className="project-card d-flex justify-content-center">
-            <ProjectCard
-              isBlog={false}
-              title="Think Ink — Gamified Reading Platform"
-              description="A responsive gamified reading platform applying minimalist UI principles and user-centered information architecture. Features progress tracking and visual rewards for a 30% retention improvement."
-              demoLink="https://thinkinkreading2025.weebly.com"
-            />
-          </Col>
-
-          <Col md={4} className="project-card d-flex justify-content-center">
-            <ProjectCard
-              isBlog={true}
-              title="ReadingWithAnnis — Book Review Blog"
-              description="Independently developed book review blog achieving a 90+ Lighthouse score. Applied UI/UX best practices like typography contrast and whitespace to reduce reading friction by 25%."
-              demoLink="https://readingwithannis.vercel.app"
-            />
-          </Col>
-        </Row>
-
-        <Row
-          style={{
-            justifyContent: "center",
-            paddingBottom: "10px",
-            gap: "30px",
-            display: "flex",
-            flexWrap: "wrap",
-          }}
-        >
-          <Col md={4} className="project-card d-flex justify-content-center">
-            <ProjectCard
-              isBlog={false}
-              title="Digital English Book (Book Creator)"
-              description="A collaborative project featuring student-generated English texts and listening activities, designed to enhance learning outcomes for junior high school students."
-              demoLink="https://read.bookcreator.com/kWWJwNINR0dg7GPkPfi4sdGpygH2/99UftvSAQ4yveIKrRaXmVw"
-            />
-          </Col>
-
-          <Col md={4} className="project-card d-flex justify-content-center">
-            <ProjectCard
-              isBlog={true}
-              title="Explore With Annis – Exchange Blog"
-              description="Documenting reflections and cultural growth during the PMM4 student exchange program, providing insights into international academic experiences."
-              demoLink="https://explorewithannis.weebly.com"
-            />
-          </Col>
-          {/* Add more projects here as needed, following the structure */}
+                    {PROJECTS_DATA.map((project) => (
+            <Col md={4} className="project-card d-flex justify-content-center" key={project.id}>
+              <ProjectCard
+                isBlog={project.isBlog || false}
+                title={project.title}
+                description={
+                  project.description.split('\n').map((line, idx) => (
+                    <span key={idx}>
+                      {line}
+                      <br />
+                    </span>
+                  ))
+                }
+                demoLink={project.demoLink}
+                customButtonText={project.customButtonText}
+              />
+            </Col>
+          ))}
         </Row>
 
         {/* CSS for responsive adjustments and animations (if any specific to Projects.js) */}

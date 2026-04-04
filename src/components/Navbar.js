@@ -119,27 +119,7 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            {/* Removed the entire GitHub button section */}
-            {/* <Nav.Item className="fork-btn">
-              <Button
-                href="https://github.com/prabujayant/"
-                target="_blank"
-                className="fork-btn-inner"
-                style={{
-                  backgroundColor: "#8b5cf6",
-                  color: "#fff",
-                  fontWeight: "bold",
-                  border: "none",
-                  borderRadius: "20px",
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
-            </Nav.Item>
-            */}
-          </Nav>
+                      </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

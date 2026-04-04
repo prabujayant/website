@@ -1,42 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Instagram, Linkedin, Mail } from "lucide-react";
+import { SOCIAL_LINKS, HOME_ACHIEVEMENTS } from "../../Constants";
 
-function Home() {
+function Home2() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
 
-  useEffect(() => {
+    useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const achievements = [
-    {
-      title: "🥉 3rd Place - Kalla Youth Fest Hackathon 2024",
-      description: "Awarded 3rd place with a sustainable wind turbine innovation supporting SDGs 2045. Won IDR 1,000,000 cash prize.",
-      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-    },
-    {
-      title: "🏅 Top 150 Essay - Andalas University", 
-      description: "Selected as one of the top 150 essays out of 1,000+ participants in the national science competition.",
-      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
-    },
-    {
-      title: "🥉 Bronze Medal - National Language Olympiad",
-      description: "Achieved Bronze Medal (Top 10 out of 1,000+) in English and Indonesian language categories by Gypem Indonesia.",
-      gradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)"
-    },
-    {
-      title: "🎓 PMM4 Student Exchange Awardee",
-      description: "Selected for the PMM4 Student Exchange Program with full funding of $1,017.28 USD to study at Universitas Nusa Cendana.",
-      gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
-    }
-  ];
-
-  const socialLinks = [
-    { icon: Mail, url: "mailto:sitiannisadahlan50@gmail.com", color: "#ea4335" },
-    { icon: Linkedin, url: "https://linkedin.com/in/siti-annisa-dahlan", color: "#0077b5" },
-    { icon: Instagram, url: "https://instagram.com/an_nzaaa", color: "#e4405f" }
-  ];
+  const topSocialLinks = SOCIAL_LINKS.slice(0, 3); // Get first 3 links for Home2
 
   return (
     <div style={{
@@ -281,7 +254,7 @@ function Home() {
                 background: transparent;
               }
             `}</style>
-            {achievements.map((achievement, index) => (
+                        {HOME_ACHIEVEMENTS.map((achievement, index) => (
               <div
                 key={index}
                 className="achievement-card"
@@ -371,17 +344,17 @@ function Home() {
             }}>connect</span> with me on these platforms:
           </p>
           
-          <div style={{
+                    <div style={{
             display: "flex",
             justifyContent: "center",
             gap: "40px",
             flexWrap: "wrap"
           }}>
-            {socialLinks.map((social, index) => {
+            {topSocialLinks.map((social) => {
               const IconComponent = social.icon;
               return (
                 <a
-                  key={index}
+                  key={social.id}
                   href={social.url}
                   target="_blank"
                   rel="noreferrer"
@@ -470,4 +443,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home2;

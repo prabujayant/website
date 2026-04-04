@@ -1,8 +1,8 @@
 import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import {
-  IoLogoInstagram, IoLogoTiktok, IoLogoTwitter, IoLogoYoutube
-} from "react-icons/io5";
+  SiFigma, SiNotion, SiSlack, SiAdobephotoshop, SiHtml5, SiCss3, SiJavascript
+} from "react-icons/si";
 
 function Techstack() {
   const boxStyle = {
@@ -98,33 +98,39 @@ function Techstack() {
         </Col>
       </Row>
 
-      {/* Social Media Platforms Section */}
-      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "15px", fontSize: "2rem" }}> {/* Reduced marginBottom */}
-        Social Media Platforms
+            {/* Software Tools & Languages */}
+      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "15px", fontSize: "2rem" }}>
+        Software & Tools
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}> {/* Increased gap */}
+      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}>
         <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
           <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
-            <IoLogoInstagram style={{ color: "#d4af37", fontSize: "3.5rem" }} /> {/* Larger icon */}
-            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>Instagram</div> {/* Larger text */}
+            <SiFigma style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>Figma</div>
           </div>
         </Col>
         <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
           <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
-            <IoLogoTiktok style={{ color: "#d4af37", fontSize: "3.5rem" }} />
-            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>TikTok</div>
+            <SiAdobephotoshop style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>Photoshop</div>
           </div>
         </Col>
         <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
           <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
-            <IoLogoTwitter style={{ color: "#d4af37", fontSize: "3.5rem" }} />
-            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>Twitter</div>
+            <SiNotion style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>Notion</div>
           </div>
         </Col>
         <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
           <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
-            <IoLogoYoutube style={{ color: "#d4af37", fontSize: "3.5rem" }} />
-            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>YouTube</div>
+            <SiHtml5 style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>HTML5</div>
+          </div>
+        </Col>
+        <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
+          <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
+            <SiCss3 style={{ color: "#d4af37", fontSize: "3.5rem" }} />
+            <div style={{ color: "white", marginTop: "10px", fontSize: "1.1rem" }}>CSS3</div>
           </div>
         </Col>
       </Row>

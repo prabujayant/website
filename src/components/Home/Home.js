@@ -231,71 +231,7 @@ function Home() {
                 </p>
               </div>
 
-              {/* Key Achievements Highlight */}
-              <div style={{
-                marginTop: "30px",
-                animation: "fadeInUp 1s ease-out 1.2s both"
-              }}>
-                <div className="achievement-highlight-box" style={{
-                  background: "rgba(199, 112, 240, 0.1)",
-                  padding: "20px 25px",
-                  borderRadius: "12px",
-                  border: "1px solid rgba(199, 112, 240, 0.2)",
-                  backdropFilter: "blur(10px)"
-                }}>
-                  <h3 style={{
-                    color: "#c770f0",
-                    fontSize: "1.3em",
-                    fontWeight: "600",
-                    marginBottom: "15px"
-                  }}>
-                    🏆 Recent Achievements
-                  </h3>
-                  <div className="achievement-highlight-list" style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "15px"
-                  }}>
-                    <div style={{
-                      background: "rgba(212, 175, 55, 0.15)",
-                      padding: "10px 15px",
-                      borderRadius: "8px",
-                      fontSize: "0.9em",
-                      color: "#fff"
-                    }}>
-                      🥉 3rd Place - Kalla Youth Fest Hackathon 2024
-                    </div>
-                    <div style={{
-                      background: "rgba(199, 112, 240, 0.15)",
-                      padding: "10px 15px",
-                      borderRadius: "8px",
-                      fontSize: "0.9em",
-                      color: "#fff"
-                    }}>
-                      🏅 Top 150 Essay - Andalas University
-                    </div>
-                    <div style={{
-                      background: "rgba(212, 175, 55, 0.15)",
-                      padding: "10px 15px",
-                      borderRadius: "8px",
-                      fontSize: "0.9em",
-                      color: "#fff"
-                    }}>
-                      🥉 Bronze Medal - National Language Olympiad
-                    </div>
-                    <div style={{
-                      background: "rgba(199, 112, 240, 0.15)",
-                      padding: "10px 15px",
-                      borderRadius: "8px",
-                      fontSize: "0.9em",
-                      color: "#fff",
-                      textAlign: "center" // Added this line to center the text
-                    }}>
-                      🎓 PMM4 Student Exchange Awardee
-                    </div>
-                  </div>
-                </div>
-              </div>
+                            {/* Key Achievements Highlight - Removed to avoid duplication with Home2.js */}
             </Col>
 
             <Col md={5} style={{ 

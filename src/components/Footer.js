@@ -1,19 +1,10 @@
 import React from "react";
-import { Instagram, Linkedin, Mail } from "lucide-react";
-import { IoLogoTiktok, IoLogoTwitter } from "react-icons/io5";
+import { SOCIAL_LINKS } from "../Constants";
 
 function Footer() {
   let date = new Date();
   let year = date.getFullYear();
   
-  const socialLinks = [
-    { icon: Linkedin, url: "https://linkedin.com/in/siti-annisa-dahlan", color: "#0077b5" },
-    { icon: Instagram, url: "https://www.instagram.com/an_nzaaa?igsh=NzYzcmt3cDE1YzVo", color: "#e4405f" },
-    { icon: Mail, url: "mailto:sitiannisadahlan50@gmail.com", color: "#bb001b" },
-    { icon: IoLogoTiktok, url: "https://www.tiktok.com/@anotherpageunlocked_?is_from_webapp=1&sender_device=pc", color: "#69C9D0" },
-    { icon: IoLogoTwitter, url: "https://x.com/apageunlocked_", color: "#1DA1F2" }
-  ];
-
   return (
     <div style={{
       background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%)",
@@ -95,16 +86,16 @@ function Footer() {
             alignItems: "center",
             justifyContent: "center"
           }}>
-            <div style={{
+                        <div style={{
               display: "flex",
               gap: "30px",
               justifyContent: "center"
             }}>
-              {socialLinks.map((social, index) => {
+              {SOCIAL_LINKS.map((social) => {
                 const IconComponent = social.icon;
                 return (
                   <a
-                    key={index}
+                    key={social.id}
                     href={social.url}
                     target="_blank"
                     rel="noreferrer"
