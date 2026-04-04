@@ -6,14 +6,11 @@ import { BsGithub } from "react-icons/bs";
 import { FaEye, FaStar, FaHeart } from "react-icons/fa";
 
 function ProjectCards(props) {
-  const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
 
   return (
     <Card
       className="project-card-view"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Animated background gradient overlay */}
       <div className="project-card-gradient-overlay"></div>
