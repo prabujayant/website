@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import {
-  SiFigma, SiNotion, SiSlack, SiAdobephotoshop, SiHtml5, SiCss3, SiJavascript
+  SiFigma, SiNotion, SiAdobephotoshop, SiHtml5, SiCss3
 } from "react-icons/si";
 
 function Techstack() {
