@@ -784,7 +784,7 @@ button:focus {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  min-width: 300px;
+  
   flex-shrink: 0;
 }
 
@@ -1566,7 +1566,7 @@ button:focus {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  min-width: 300px;
+  
   flex-shrink: 0;
 }
 

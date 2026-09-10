@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
@@ -15,15 +15,14 @@ function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
+  useEffect(() => {
+    function scrollHandler() {
+      updateNavbar(window.scrollY >= 20);
     }
-  }
-
-  window.addEventListener("scroll", scrollHandler);
+    scrollHandler();
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   return (
     <Navbar
@@ -49,11 +48,12 @@ function NavBar() {
           <span></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" defaultActiveKey="#home">
+          <Nav className="ms-auto">
             <Nav.Item>
               <Nav.Link
-                as={Link}
+                as={NavLink}
                 to="/"
+                end
                 onClick={() => updateExpanded(false)}
                 className="nav-link"
               >
@@ -63,7 +63,7 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                as={Link}
+                as={NavLink}
                 to="/about"
                 onClick={() => updateExpanded(false)}
                 className="nav-link"
@@ -74,7 +74,7 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                as={Link}
+                as={NavLink}
                 to="/project"
                 onClick={() => updateExpanded(false)}
                 className="nav-link"
@@ -86,7 +86,7 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                as={Link}
+                as={NavLink}
                 to="/resume"
                 onClick={() => updateExpanded(false)}
                 className="nav-link"

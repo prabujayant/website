@@ -30,11 +30,9 @@ function Toolstack() {
   };
 
   return (
-    <Container style={{ paddingTop: "50px", textAlign: "center" }}>
-      <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px", fontSize: "1.8rem" }}>
-        Digital Tools I Use
-      </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "20px", gap: "20px" }}> {/* Reduced paddingBottom */}
+    <Container style={{ paddingTop: "8px", textAlign: "center" }}>
+      {/* Section title is rendered by About.js */}
+      <Row className="g-4" style={{ justifyContent: "center", paddingBottom: "12px" }}>
         <Col xs={6} md={4} lg={2} className="tech-tool-item mb-4">
           <div style={toolBoxStyle} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <div style={{ color: "white", marginTop: "10px", fontSize: "1rem" }}>Figma</div>

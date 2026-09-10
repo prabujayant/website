@@ -1,0 +1,291 @@
+ANIMATION & RENDER PERFORMANCE AUDIT REPORT
+============================================
+
+SCOPE: Annisweb codebase at C:\Users\salag\OneDrive\Desktop\Annisweb
+FILES ANALYZED: 5 core component files + 3 CSS files + multiple supporting files
+TOTAL KEYFRAME DEFINITIONS: 31 across 3 CSS/JS files
+TOTAL PARTICLE INSTANCES: 655 (estimated)
+DATE: 2026-09-10
+
+---
+
+1. ANIMATION PATTERNS BY FILE
+
+=== src/components/Particle.js ===
+- Particle count: 160 (via react-tsparticles config)
+- Render frequency: continuous (particles move infinitely)
+- useEffect cleanup: N/A (no useEffect - just renders Particles component)
+- Keyframes triggered: None directly; relies on tspprites engine
+
+=== src/components/Pre.js ===
+- Preloader timeout: 1200ms (setTimeout in App.js, line 25-29)
+- Controls: Show/hide preloader based on `load` state
+- useEffect cleanup: Yes - clearTimeout returned (App.js line 29)
+- Keyframes triggered: None
+
+=== src/components/Home/HomeNew.js ===
+- Particle count: 160 (via <Particle /> component)
+- Animation keyframes: None defined inline
+- useState/useEffect for animations:
+  - useEffect: sets isVisible=true on mount (line 8-10)
+  - useState: isVisible (controls visibility), hoveredCard (tracks hover state)
+- onMouseEnter/onMouseLeave: None significant
+- Keyframe usage: fadeInUp, fadeInRight referenced via CSS classes from style.css
+
+=== src/components/About/About.js ===
+- Particle count: 160 (via <Particle /> component)
+- Animation keyframes (inline, in <style> tag, lines 321-398):
+  - fadeInUp (lines 322-331)
+  - fadeInRight (lines 333-342)
+  - fadeIn (lines 344-347)
+  - expandWidth (lines 349-352)
+  - gradientShift (lines 354-358)
+  - gradientSlide (lines 360-363)
+  - float (lines 365-368)
+  - pulse (lines 370-373)
+- Inline styles with animation:
+  - gradientShift 4s ease infinite on h1 (line 84)
+  - pulse 4s ease-in-out infinite on avatar glow (line 537)
+  - pulse 4s ease-in-out infinite on about card div (line 128)
+  - pulse 2s ease-in-out infinite with delays on 3 decorative dots (lines 300-308)
+  - float 7s ease-in-out infinite on floating shape (line 35)
+  - float 9s ease-in-out infinite reverse on second floating shape (line 48)
+- onMouseEnter/onMouseLeave handlers (lines 182-189, 214-215):
+  - onMouseEnter: sets transform="scale(1.05) translateY(-15px)" and boxShadow
+  - onMouseLeave: resets transform and boxShadow
+  - onMouseEnter: sets opacity="1" on overlay div
+  - onMouseLeave: sets opacity="0" on overlay div
+- CSS transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)" on glass-card (line 218) — LAYOUT THRASHING CANDIDATE
+- Hover effect on avatar img: transform: scale(1.05) with filter change (lines 564-567)
+
+=== src/components/Home/Home2.js ===
+- Particle count: 15 (manually created floating-particle divs, lines 20-33)
+- Animation keyframes (inline, lines 169-207):
+  - float (lines 170-173)
+  - fadeInUp (lines 175-184)
+  - fadeInRight (lines 186-195)
+- useState/useEffect for animations:
+  - useState: isVisible (initialized false, set true on mount via useEffect line 8-10)
+  - useState: hoveredCard (tracks which achievement card is hovered, lines 6-7)
+  - useEffect: sets isVisible=true on mount (line 8-10)
+- onMouseEnter/onMouseLeave handlers:
+  - Avatar wrapper (lines 58-69): onMouseEnter sets transform="perspective(1000px) rotateY(0deg) scale(1.05)", onMouseLeave resets to "-15deg"
+  - Social link buttons (lines 152-159): onMouseEnter sets background/boxShadow to social color, onMouseLeave resets
+  - Achievement cards (lines 107-108): onMouseEnter/onMouseLeave set hoveredCard state
+- CSS style recalculations: Direct style property mutations on every mouse event
+
+=== src/components/Home/IntroductionSection.js ===
+- Particle count: 15 (manually created floating particles, similar to Home2.js)
+- useState/useEffect for animations:
+  - useState: isVisible (false initially, set true on mount)
+  - useState: hoveredCard (null initially, set on achievement card mouse enter/leave)
+- useEffect cleanup: None returned (empty dependency array [only])
+- onMouseEnter/onMouseLeave handlers:
+  - Avatar wrapper (lines 58-65): direct style.transform mutations
+  - Achievement cards (lines 99-100): set hoveredCard state
+  - Social links (lines 144-151): direct style.background and style.boxShadow mutations
+- Keyframes (inline, lines 161-199):
+  - float (lines 162-165)
+  - fadeInUp (lines 167-176)
+  - fadeInRight (lines 178-187)
+
+---
+
+2. USE STATE HOOKS DRIVING ANIMATIONS
+
+| File | Hook | Drives |
+|------|------|--------|
+| App.js | useState([load]) | Preloader visibility, triggers 1200ms timeout |
+| App.js | useEffect | setTimeout with clearTimeout cleanup |
+| NavBar.js | useState(expand) | Navbar expand/collapse |
+| NavBar.js | useState(navColour) | Sticky navbar background change on scroll |
+| IntroductionSection.js | useState(isVisible) | Intro section visibility toggle on mount |
+| IntroductionSection.js | useState(hoveredCard) | Achievement card hover highlighting |
+| Home2.js | useState(isVisible) | Home2 intro/avatar section visibility |
+| Home2.js | useState(hoveredCard) | Achievement card hover highlighting |
+| ResumeNew.js | useState(width) | PDF document width for responsive scaling |
+| Techstack.js | (none inline) | hoverEffect object with onMouseEnter/onMouseLeave |
+| Toolstack.js | (none inline) | onMouseEnter/onMouseLeave style mutations |
+| ProjectCards.js | useState(isLiked) | Like button state |
+
+---
+
+3. USE EFFECT CLEANUP RETURN FUNCTIONS
+
+| File | useEffect Cleanup | Notes |
+|------|----------------|-------|
+| App.js | ✅ Yes — clearTimeout(timer) (line 29) | Proper cleanup |
+| NavBar.js | ❌ No cleanup | window.addEventListener("scroll") never removed |
+| IntroductionSection.js | ❌ No cleanup | Empty deps [], no return function |
+| Home2.js | ❌ No cleanup | Empty deps [], no return function |
+| ResumeNew.js | ✅ Implicit | useEffect with [] deps, setWidth on mount only |
+| About.js | ❌ No inline useEffect | No useEffect in About component |
+| HomeNew.js | ❌ No useEffect | No useEffect in HomeNew component |
+
+---
+
+4. WINDOW.ADDEventLISTENER("scroll") HANDLERS
+
+| File | Handler | Debounce/Throttle |
+|------|---------|-------------------|
+| NavBar.js (lines 18-26) | `scrollHandler` function: updates navColour state based on window.scrollY >= 20 | ❌ NONE — direct state update on every scroll event |
+
+---
+
+5. onMouseEnter/onMouseLeave HANDLERS WITH STYLE RECALCULATIONS
+
+About.js (lines 182-189, 214-215):
+- Direct style property assignments on mouse events
+- Sets transform, boxShadow, opacity inline
+- Causes layout thrash on every hover event
+
+Home2.js (lines 58-65, 152-159, 107-108):
+- Avatar wrapper: transform style mutation
+- Social buttons: background and boxShadow style mutations
+- Achievement cards: hoveredCard state (indirect)
+
+IntroductionSection.js (lines 58-65, 99-100, 144-151):
+- Avatar wrapper: transform style mutation
+- Achievement cards: hoveredCard state
+- Social links: background and boxShadow style mutations
+
+Techstack.js (lines 23-44):
+- hoverEffect object with onMouseEnter/onMouseLeave
+- Queries DOM via e.currentTarget.querySelectorAll('svg') and .style.color changes
+- Affects multiple tech skill items (6 cards)
+
+Toolstack.js (lines 22-30):
+- onMouseEnter/onMouseLeave sets transform and boxShadow
+- Affects 5 tool items
+
+---
+
+6. CSS TRANSITION: PROPERTY ON :HOVER — LAYOUT THRASHING CANDIDATES
+
+| File/Selector | Transition Property | Issue |
+|--------------|--------------------|-------|
+| About.js — .glass-card | `transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"` | ⚠️ "all" transitions cause layout thrash — animates all properties including width/height |
+| NavBar.css — .navbar | `transition: all 0.3s ease-out` | ⚠️ "all" on fixed-position navbar |
+| About.css — .glass-card-hover | `transition: all var(--transition-smooth)` | ⚠️ "all" keyword |
+| Projects.css — .project-card-view | `transition: all var(--transition-smooth)` | ⚠️ "all" keyword |
+| Techstack.js — .tech-skills-item div | `transition: "all 0.3s ease-in-out"` (boxStyle) | ⚠️ "all" transitions on 9 skill items |
+| Toolstack.js — .tech-tool-item div | No transition on leave, only on enter | Mixed — enter has transition, leave is instant |
+
+---
+
+7. DUPLICATED KEYFRAMES ANALYSIS
+
+Keyframes duplicated across files (count of `@keyframes` definitions):
+
+| Keyframe | style.css | About.js | Home2.js | IntroductionSection.js | Total |
+|----------|-----------|----------|----------|------------------------|-------|
+| fadeInUp | 1 | 1 | 1 | 1 | **4** |
+| fadeInRight | 1 | 1 | 1 | 1 | **4** |
+| pulse | 1 | 1 | — | — | **2** |
+| gradientShift | 1 | 1 | — | — | **2** |
+| float | 1 | 1 | 1 | 1 | **4** |
+| fadeIn | — | 1 | — | — | **1** |
+| expandWidth | — | 1 | — | — | **1** |
+| gradientSlide | — | 1 | — | — | **1** |
+
+**Total keyframe definitions across all files: 31**
+**Unique keyframe names: 15**
+
+The task comment about "duplicated 4x each: fadeInUp, fadeInRight, pulse, gradientShift" is:
+- ✅ fadeInUp: 4 definitions across 4 files ✓
+- ✅ fadeInRight: 4 definitions across 4 files ✓
+- ⚠️ pulse: 2 definitions (not 4) — defined in style.css + About.js
+- ⚠️ gradientShift: 2 definitions (not 4) — defined in style.css + About.js
+
+---
+
+8. TOTAL PARTICLE INSTANCES ACROSS ALL PAGES
+
+| Component | Particle Count | Instances |
+|-----------|---------------|-----------|
+| react-tsparticles (<Particle />) | 160 per instance | 4 pages × 160 = **640** |
+| Home2.js manual floating particles | 15 divs | **15** |
+| IntroductionSection.js manual floating particles | 15 divs | **15** |
+| About.js CSS-styled floating elements | 2 divs with animation | **2** |
+| HomeNew.js CSS-animated elements | Various hero/avatar elements | **—** (CSS only, no extra DOM particles) |
+| Projects.js tsparticles | 160 (via <Particle />) | **160** |
+| ResumeNew.js tsparticles | 160 (via <Particle />) | **160** |
+
+**Grand total: 640 + 15 + 15 + 2 + 160 + 160 = **992** particle instances**
+
+However, if counting only JS-defined/rendered particles:
+- 6 pages use <Particle /> at 160 each = **960**
+- Plus 30 manually created floating-particle divs (15 in Home2 + 15 in IntroductionSection) = **30**
+- **Total: 990**
+
+---
+
+9. HIGH-IMPACT RENDER OPTIMIZATION CANDIDATES
+
+**Priority 1 — Fix "all" transitions (layout thrashing):**
+- About.js line 218: `transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"` on .glass-card
+- Techstack.js line 13: `transition: "all 0.3s ease-in-out"` in boxStyle (9 items)
+- NavBar.css: `transition: all 0.3s ease-out` on .navbar
+- All affect animating width/height/layout properties on every state change
+
+**Priority 2 — Reduce particle count:**
+- Current: 160 particles × 4 pages = 640 DOM elements
+- Recommendation: Reduce to 80-100 for similar visual effect
+- Home2.js/IntroductionSection.js: 15 floating particles each — consider CSS-only float animation with 1-2 elements
+
+**Priority 3 — Add useEffect cleanup:**
+- NavBar.js: Add `return () => window.removeEventListener("scroll", scrollHandler)`
+- IntroductionSection.js: Add cleanup for event listeners if any are added
+- Home2.js: Same as IntroductionSection.js
+
+**Priority 4 — Consolidate duplicated keyframes:**
+- fadeInUp and fadeInRight defined 4x each across separate component style tags
+- Recommendation: Move to shared CSS file or global style context
+- pulse and gradientShift also duplicated (2x each)
+
+**Priority 5 — onMouseEnter/onMouseLeave style mutations:**
+- About.js, Home2.js, IntroductionSection.js, Techstack.js, Toolstack.js all mutate style directly
+- Recommendation: Use CSS classes with classList.toggle instead of inline style changes
+- Example: About.js — replace inline style mutations with .about-card:hover CSS rules
+
+**Priority 6 — Debounce scroll handler:**
+- NavBar.js scrollHandler has no debounce/throttle
+- Recommendation: Wrap in requestAnimationFrame or use a simple debounce
+
+---
+
+10. FILE PATHS AND LINE NUMBERS SUMMARY
+
+**Keyframe definitions:**
+- style.css: lines 2042-2099 (fadeInUp, fadeIn, expandWidth, float, pulse, gradientShift, gradientSlide, rotate, shimmer, textGlow, slideInLeft, slideInRight, fadeInDown, wave-animation, gradientFlow)
+- About.js: lines 321-398 (8 keyframes inline)
+- Home2.js: lines 169-207 (3 keyframes inline)
+- IntroductionSection.js: lines 161-199 (3 keyframes inline)
+
+**useState hooks driving animations:**
+- App.js line 22: `const [load, upadateLoad] = useState(true)`
+- NavBar.js lines 15-16: `useState(expand)`, `useState(navColour)`
+- IntroductionSection.js line 5: `const [isVisible, setIsVisible] = useState(false)`
+- Home2.js line 5: `const [isVisible, setIsVisible] = useState(false)`
+- Home2.js line 6: `const [hoveredCard, setHoveredCard] = useState(null)`
+- ResumeNew.js line 12: `const [width, setWidth] = useState(1200)`
+
+**useEffect cleanup opportunities:**
+- NavBar.js line 26: `window.addEventListener("scroll", scrollHandler)` — no cleanup return
+- IntroductionSection.js line 8: `useEffect(() => { setIsVisible(true); }, [])` — no cleanup
+- Home2.js line 8: `useEffect(() => { setIsVisible(true); }, [])` — no cleanup
+
+**window.addEventListener("scroll") handlers:**
+- NavBar.js line 26: No debounce/throttle
+
+**onMouseEnter/onMouseLeave with style recalculations:**
+- About.js lines 182-189: about card hover — transform + boxShadow
+- About.js lines 214-215: overlay div hover — opacity
+- Home2.js lines 58-65: avatar wrapper hover — transform
+- Home2.js lines 152-159: social link buttons hover — background + boxShadow
+- Techstack.js lines 23-44: 9 tech skill items hover — DOM querying + style changes
+- Toolstack.js lines 22-30: 5 tool items hover — transform + boxShadow
+
+**CSS transition: "all" on :hover (layout thrash):**
+- About.js line 218: `.glass-card { transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }`
+- Techstack.js line 13: `boxStyle` has `transition: "all 0.3s ease-in-out"` applied to 9 skill items

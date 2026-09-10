@@ -1,5 +1,14 @@
 .App {
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+/* Main content should grow so footer stays at bottom */
+.App > .container-fluid,
+.App main {
+  flex: 1 0 auto;
 }
 
 .App-logo {
@@ -14,18 +23,23 @@
 }
 
 .App-header {
-  background-color: #ffffff; /* White background for a clean look */
+  background-color: transparent;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #000000; /* Black text for readability */
+  color: #fff;
 }
 
 .App-link {
-  color: #c5a880; /* Gold color for highlights */
+  color: #d4af37;
+}
+
+.App-link:hover,
+.App-link:focus-visible {
+  color: #ffd700;
 }
 
 @keyframes App-logo-spin {
@@ -34,5 +48,25 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Accessible focus + reduced motion defaults */
+:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

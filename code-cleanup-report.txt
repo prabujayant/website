@@ -1,0 +1,133 @@
+CODE CLEANUP REPORT - Annisweb Codebase
+========================================
+
+This report analyzes all .js files in the src/ directory for:
+- Unused imports
+- Duplicate code patterns
+- Unused state variables
+- Orphaned style objects
+- Unused component imports
+
+---
+
+## 1. UNUSED IMPORTS
+
+### Critical Issues:
+
+**src/components/Footer.js** (Line 1)
+- `useState` is imported but never used in the component function body
+- The `year` variable is computed with plain JavaScript: `let date = new Date(); let year = date.getFullYear();`
+- FIX: Remove `{ useState }` from the import line, or remove the import entirely
+
+All other files have all imports properly used:
+
+- src/App.js: All imports used (React, hooks, components, router, ScrollToTop, styles)
+- src/components/Home/HomeNew.js: All imports used (React, Bootstrap, router, Particle, Type, ProjectCard, Constants)
+- src/components/Projects/Projects.js: All imports used (React, Bootstrap, ProjectCard, Particle, Constants)
+- src/components/Projects/ProjectDetails.js: All imports used (React, useParams, Link, Bootstrap, Constants, Particle)
+- src/components/About/About.js: All imports used (React, Bootstrap, Particle, AboutCard, laptopImg, Toolstack)
+- src/components/About/Techstack.js: All imports used (React, boxStyle/hoverEffect, Col, SiFigma/SiNotion/SiAdobephotoshop/SiHtml5/SiCss3)
+- src/components/About/Toolstack.js: All imports used (React, Col/Row/Container, toolBoxStyle, onMouseEnter/onMouseLeave)
+- src/components/About/AboutCard.js: All imports used (React, Card, ImPointRight)
+- src/components/Resume/ResumeNew.js: All imports used (React, useState/useEffect, Bootstrap Button, pdf, AiOutlineDownload, Document/Page/pdfjs)
+- src/components/Navbar.js: All imports used (React, useState, Navbar, Nav, Container, Link, icons from ai/cg)
+- src/constants.js: Data exports only, no imports to check
+- src/components/Particle.js: All imports used (React, Particles from react-tsparticles)
+- src/components/Pre.js: All imports used (React)
+- src/components/ScrollToTop.js: All imports used (useEffect, useLocation)
+- src/index.js: All imports used (React, ReactDOM, App, reportWebVitals)
+- src/components/Home/Home2.js: All imports used (React, SOCIAL_LINKS, HOME_ACHIEVEMENTS from Constants)
+
+---
+
+## 2. DUPLICATE CODE PATTERNS
+
+### High-Priority Consolidation Opportunities:
+
+**A. Similar box styles in Techstack.js vs Toolstack.js**
+
+- **Techstack.js** (lines 8-21): `boxStyle` object with gradient background, borderRadius, boxShadow, border, display flex, flexDirection, alignItems, justifyContent, height
+- **Toolstack.js** (lines 7-20): `toolBoxStyle` object with backgroundColor, borderRadius, boxShadow, transition, border, display flex, flexDirection, alignItems, justifyContent, height, cursor
+
+**Recommendation**: Extract a shared style constant or CSS module. Both styles serve the same purpose (card-like boxes for tech/tool items) and differ only in subtle details (gradient vs solid bg, shadow color).
+
+**B. Hover effect patterns in Techstack.js vs Toolstack.js**
+
+- **Techstack.js** (lines 23-44): `hoverEffect` object with onMouseEnter/onMouseLeave that uses `e.currentTarget.querySelectorAll('svg')` and `e.currentTarget.querySelectorAll('div')` to change colors
+- **Toolstack.js** (lines 22-30): Separate `onMouseEnter` and `onMouseLeave` functions with simpler style transitions
+
+**Recommendation**: Unify the hover interaction pattern. The Techstack version is more complex (querySelector for icons/text), while Toolstack is simpler. Could create a shared hover utility component.
+
+**C. Inline keyframe animations duplicated across About.js and Home2.js**
+
+- **About.js** (lines 323-400): `<style>` block with keyframes: fadeInUp, fadeInRight, fadeIn, expandWidth, gradientShift, gradientSlide, float, pulse
+- **Home2.js** (lines 169-207): `<style>` block with keyframes: float, fadeInUp, fadeInRight, scrollbar styles
+
+**About.js keyframes**: fadeInUp, fadeInRight, fadeIn, expandWidth, gradientShift, gradientSlide, float, pulse
+**Home2.js keyframes**: float, fadeInUp, fadeInRight (plus scrollbar)
+
+**Recommendation**: Extract shared keyframes (fadeInUp, fadeInRight, float) to a global CSS file. The About.js-specific animations (gradientShift, gradientSlide, pulse, expandWidth) and Home2.js-specific scrollbar styles can remain component-specific.
+
+**D. Github component referenced but removed in About.js**
+
+- **About.js** (line 235): `// Removed: { title: "Days I", highlight: "Code", component: <Github /> }`
+- **Github.js** (src/components/About/Github.js): Component exists but is entirely commented out with `{/* ... commented content ... */}` and a note: "This component is kept for 'name's sake' as requested, but it currently does not display any content."
+
+**Recommendation**:
+1. Remove the commented-out reference in About.js (line 235)
+2. Either delete Github.js entirely or restore it with actual content if still needed
+
+**E. Overlapping skill/tools content between Techstack.js and Toolstack.js**
+
+- **Techstack.js** lists under "Core Competencies": UX Research, UI/UX Design, Tech & Web, Tools (Figma, Canva, Photoshop, Microsoft 365 Copilot), Collaboration (Notion, Slack, Google Workspace)
+- **Toolstack.js** lists: Figma, Notion, Slack, Canva, Google Workspace, Adobe Photoshop
+
+**Recommendation**: The "Software & Tools" section in Techstack.js (lines 101-136) and Toolstack.js have significant overlap. Consider:
+- Consolidating into a single component
+- Or having Techstack focus on UX/UI competencies and Toolstack on actual tools used, with no duplication
+
+---
+
+## 3. UNUSED STATE VARIABLES
+
+No critical unused state variables found. All state variables are properly used:
+
+- **App.js** `load` state: Used for preloader timing and toggling "no-scroll"/"scroll" class on mount
+- **HomeNew.js** `featuredProjects`: Derived from PROJECTS_DATA.slice(), not state (pattern is fine)
+- **ResumeNew.js** `width` state: Initialized to 1200, updated on mount via useEffect with `window.innerWidth`. Used for PDF scaling. Note: Effect has empty dependency `[]`, so it only runs on mount and won't update on resize (intentional design choice)
+
+---
+
+## 4. ORPHANED STYLE OBJECTS
+
+Several components have inline style objects that could be extracted to CSS classes for better maintainability, but these are not "orphaned" (unused). They're actively used:
+
+**About.js**: Numerous inline styles for gradients, animations, transforms, transitions. These are extensive but actively used in the JSX. Extracting to CSS would be a refactoring improvement, not a cleanup of unused code.
+
+**Footer.js**: Minimal inline styles in the JSX itself (gradient overlay, content layout). No orphaned styles.
+
+**Techstack.js / Toolstack.js**: `boxStyle` / `toolBoxStyle` and hover effects are actively used via the `style` prop and `{...hoverEffect}` spread.
+
+---
+
+## 5. UNUSED COMPONENT IMPORTS
+
+No unused component imports found. All imported components are rendered in their respective JSX.
+
+Notable observations:
+- **Github.js** exists in src/components/About/ but is commented out and referenced only via a stale comment in About.js (line 235)
+- **Home2.js** exists alongside HomeNew.js - appears to be an earlier/alternative home implementation. Not referenced in App.js (which uses HomeNew), so it may be orphaned but not causing import issues
+
+---
+
+## SUMMARY OF RECOMMENDED FIXES
+
+| File | Issue | Line | Fix |
+|------|-------|------|-----|
+| **src/components/Footer.js** | `useState` imported but never used | Line 1 | Remove `{ useState }` from import: `import React from "react";` |
+| **src/components/About/About.js** | Stale reference to removed Github component | Line 235 | Remove commented-out line: `// Removed: { title: "Days I", highlight: "Code", component: <Github /> }` |
+| **src/components/About/Github.js** | Component entirely commented out, no content displayed | N/A | Either delete the file or implement actual content |
+| **src/components/About/Techstack.js & Toolstack.js** | Duplicate tool listings (Figma, Notion, Slack, Canva, Photoshop appear in both) | Lines 88-98 (Techstack), Lines 38-67 (Toolstack) | Consolidate into single component or clearly separate scopes |
+| **src/styles/** (implied) | Keyframe animations fadeInUp, fadeInRight, float duplicated in About.js and Home2.js | Lines 323-400 (About.js), Lines 169-207 (Home2.js) | Extract shared keyframes to global CSS file |
+
+---

@@ -1,5 +1,12 @@
 import { Linkedin, Instagram, Mail } from "lucide-react";
 import { IoLogoTiktok, IoLogoTwitter } from "react-icons/io5";
+// NOTE: only images that actually match the project are wired here.
+// medisync.png (Health Prediction App), defensys.png (DefenSys) and
+// randomPassImg.png (password generator) show unrelated products with
+// conflicting in-image titles, so they are deliberately NOT used.
+import newsImg from "./Assets/Projects/news.png";
+import terraImg from "./Assets/Projects/terra.png";
+import bookstoreImg from "./Assets/Projects/bookstore.png";
 
 export const SOCIAL_LINKS = [
   { id: "linkedin", icon: Linkedin, url: "https://linkedin.com/in/siti-annisa-dahlan", color: "#0077b5" },
@@ -16,13 +23,15 @@ export const PROJECTS_DATA = [
     description: "Journal Article / Peer-reviewed in International Journal of Pedagogy, Technology and Education (IJOPATE). Tags: Publication, ELT, Artificial Intelligence.",
     demoLink: "https://ejournal.gomit.id/ijopate/article/view/586",
     isBlog: true,
-    customButtonText: "Read Article"
+    customButtonText: "Read Article",
+    imgPath: newsImg
   },
   {
     id: 2,
     title: "TaskFlow — Academic Deadline Management",
     description: "Tags: UI/UX, HCI, Prototype, HTML\nProblem: Students miss deadlines because info is spread across WhatsApp, LMS, email, and classroom — no central place to track.\nSolution / outcome: Reduced cognitive load through one dashboard with clear visual prioritization — designed via Research → Wireframe → Prototype → Web Implementation.",
-    demoLink: "https://liquiud-s.github.io/firstproject.github.io/"
+    demoLink: "https://liquiud-s.github.io/firstproject.github.io/",
+    imgPath: terraImg
   },
   {
     id: 3,
@@ -35,7 +44,8 @@ export const PROJECTS_DATA = [
     title: "ReadingWithAnnis — Book Review Blog",
     description: "Independently developed book review blog achieving a 90+ Lighthouse score. Applied UI/UX best practices like typography contrast and whitespace to reduce reading friction by 25%.",
     demoLink: "https://readingwithannis.vercel.app",
-    isBlog: true
+    isBlog: true,
+    imgPath: bookstoreImg
   },
   {
     id: 5,

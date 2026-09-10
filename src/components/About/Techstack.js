@@ -44,16 +44,12 @@ function Techstack() {
   };
 
   return (
-    <Container style={{ paddingTop: "80px", paddingBottom: "80px", textAlign: "center" }}>
-      <h2 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "60px", fontSize: "2.8rem", textShadow: "0 0 15px rgba(255, 215, 0, 0.3)" }}>
-        My Professional <strong style={{ color: "#c770f0" }}>Skillset</strong>
-      </h2>
-
-      {/* Core Competencies Section */}
+    <Container style={{ paddingTop: "24px", paddingBottom: "24px", textAlign: "center" }}>
+      {/* Core Competencies Section (section title is rendered by About.js) */}
       <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px", fontSize: "2rem" }}>
         UX & Design Competencies
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}>
+      <Row className="g-4" style={{ justifyContent: "center", paddingBottom: "24px" }}>
         <Col xs={12} md={5} lg={3} className="tech-skills-item mb-4">
           <div style={boxStyle} {...hoverEffect}>
             <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
@@ -81,7 +77,7 @@ function Techstack() {
       <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "30px", fontSize: "2rem" }}>
         Process & Communication
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "20px", gap: "30px" }}>
+      <Row className="g-4" style={{ justifyContent: "center", paddingBottom: "16px" }}>
         <Col xs={12} md={5} lg={4} className="tech-skills-item mb-4">
           <div style={boxStyle} {...hoverEffect}>
             <p style={{ color: "white", fontSize: "1.15rem", marginBottom: "0" }}>
@@ -102,7 +98,7 @@ function Techstack() {
       <h3 style={{ color: "#d4af37", fontWeight: "bold", marginBottom: "15px", fontSize: "2rem" }}>
         Software & Tools
       </h3>
-      <Row style={{ justifyContent: "center", paddingBottom: "50px", gap: "30px" }}>
+      <Row className="g-4" style={{ justifyContent: "center", paddingBottom: "8px" }}>
         <Col xs={6} md={3} lg={2} className="tech-icons mb-4">
           <div style={{ ...boxStyle, cursor: "pointer" }} {...hoverEffect}>
             <SiFigma style={{ color: "#d4af37", fontSize: "3.5rem" }} />

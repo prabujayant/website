@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
-// Removed: import Github from "./Github";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about1.jpg";
@@ -16,8 +15,8 @@ function About() {
       overflow: "hidden"
     }}>
       <Container fluid className="about-section" id="about" style={{
-        paddingTop: "80px",
-        paddingBottom: "50px",
+        paddingTop: "64px",
+        paddingBottom: "32px",
         position: "relative",
         zIndex: 1
       }}>
@@ -52,13 +51,13 @@ function About() {
 
         <Container style={{ position: "relative", zIndex: 1 }}>
           <Row style={{
-            minHeight: "85vh",
+            minHeight: "72vh",
             alignItems: "center",
             justifyContent: "center"
           }}>
-            <Col md={7} className="about-header" style={{
-              paddingTop: "50px",
-              paddingBottom: "50px",
+            <Col md={7} xs={12} className="about-header" style={{
+              paddingTop: "24px",
+              paddingBottom: "24px",
               color: "white"
             }}>
               <div style={{
@@ -132,7 +131,7 @@ function About() {
               </div>
             </Col>
 
-            <Col md={5} style={{
+            <Col md={5} xs={12} style={{
               paddingBottom: "20px",
               display: "flex",
               justifyContent: "center",
@@ -149,8 +148,8 @@ function About() {
                   position: "absolute",
                   top: "-25px",
                   left: "-25px",
-                  width: "calc(100% + 35px)",
-                  height: "calc(100% + 35px)",
+                  width: "100%",
+                  height: "100%",
                   background: "linear-gradient(45deg, rgba(212, 175, 55, 0.25), rgba(199, 112, 240, 0.25))",
                   borderRadius: "30px",
                   zIndex: -2,
@@ -162,8 +161,8 @@ function About() {
                   position: "absolute",
                   top: "-15px",
                   left: "-15px",
-                  width: "calc(100% + 15px)",
-                  height: "calc(100% + 15px)",
+                  width: "100%",
+                  height: "100%",
                   background: "linear-gradient(135deg, rgba(100, 200, 255, 0.2), rgba(255, 107, 107, 0.2))",
                   borderRadius: "25px",
                   zIndex: -1,
@@ -232,11 +231,10 @@ function About() {
         {[
           { title: "Professional", highlight: "Skillset", component: <Techstack /> },
           { title: "", highlight: "Tools", subtitle: "I Use", component: <Toolstack /> }
-          // Removed: { title: "Days I", highlight: "Code", component: <Github /> }
         ].map((section, index) => (
           <div key={index} style={{
-            paddingTop: "80px",
-            paddingBottom: "60px",
+            paddingTop: "48px",
+            paddingBottom: "32px",
             position: "relative"
           }}>
             {/* Section background effect */}
@@ -255,7 +253,7 @@ function About() {
             <Container style={{ position: "relative", zIndex: 1 }}>
               <div style={{
                 textAlign: "center",
-                marginBottom: "60px",
+                marginBottom: "36px",
                 animation: "fadeInUp 0.8s ease-out"
               }}>
                 <div style={{ position: "relative", display: "inline-block" }}>
