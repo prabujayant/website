@@ -1,14 +1,16 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FaGraduationCap, FaPalette, FaBook, FaTrophy, FaArrowRight, FaEnvelope } from "react-icons/fa";
 import homeLogo from "../../Assets/annis.png";
 import Particle from "../Particle";
 import Type from "./Type";
 import ProjectCard from "../Projects/ProjectCards";
-import { PROJECTS_DATA, HOME_ACHIEVEMENTS } from "../../Constants";
+import { PROJECTS_DATA, HOME_ACHIEVEMENTS, SOCIAL_LINKS } from "../../Constants";
 
 function Home() {
   const featuredProjects = PROJECTS_DATA.slice(0, 2); // Show top 2 projects
+  const mailLink = SOCIAL_LINKS.find((s) => s.id === "mail");
 
   return (
     <section className="home-section-container">
@@ -19,9 +21,9 @@ function Home() {
         <Row className="hero-row g-4">
           <Col md={7} xs={12} lg={7} className="hero-column">
             <div className="greeting-section">
-              <h1 className="hero-greeting">
-                Hi There! <span className="wave-emoji" role="img" aria-label="wave">👋</span>
-              </h1>
+              <p className="hero-greeting">
+                Hi There! <span className="wave-emoji" role="img" aria-label="waving hand">👋</span>
+              </p>
             </div>
 
             <div className="hero-name-section">
@@ -33,9 +35,9 @@ function Home() {
             </div>
 
             <div className="hero-professional-tags">
-              <span className="hero-tag">🎓 HCI Researcher</span>
-              <span className="hero-tag purple-tag">🎨 UI/UX Designer</span>
-              <span className="hero-tag">📖 English Educator</span>
+              <span className="hero-tag"><FaGraduationCap /> HCI Researcher</span>
+              <span className="hero-tag purple-tag"><FaPalette /> UI/UX Designer</span>
+              <span className="hero-tag"><FaBook /> English Educator</span>
             </div>
 
             <div className="typewriter-container">
@@ -52,12 +54,26 @@ function Home() {
               </p>
               <div className="d-flex flex-wrap gap-3 mt-4">
                 <Button as={Link} to="/project" className="btn-gold">
-                  View My Work
+                  View My Work <FaArrowRight />
                 </Button>
                 <Button as={Link} to="/about" variant="outline-light" className="btn-primary">
                   About Me
                 </Button>
               </div>
+              <dl className="hero-stats">
+                <div className="hero-stat">
+                  <dt className="visually-hidden">Projects</dt>
+                  <dd><strong>6+</strong><span>Projects shipped</span></dd>
+                </div>
+                <div className="hero-stat">
+                  <dt className="visually-hidden">Publication</dt>
+                  <dd><strong>1</strong><span>Journal publication</span></dd>
+                </div>
+                <div className="hero-stat">
+                  <dt className="visually-hidden">Awards</dt>
+                  <dd><strong>4</strong><span>Awards & honors</span></dd>
+                </div>
+              </dl>
             </div>
           </Col>
 
@@ -65,7 +81,9 @@ function Home() {
             <div className="avatar-wrapper">
               <div className="avatar-glow"></div>
               <div className="avatar-border"></div>
-              <img src={homeLogo} alt="Siti Annisa Dahlan" className="avatar-img" />
+              <img src={homeLogo} alt="Illustrated portrait of Siti Annisa Dahlan" className="avatar-img" />
+              <div className="hero-badge hero-badge-top">Published Researcher</div>
+              <div className="hero-badge hero-badge-bottom">User-Centered Design</div>
             </div>
           </Col>
         </Row>
@@ -100,7 +118,7 @@ function Home() {
                   <ProjectCard
                     isBlog={project.isBlog || false}
                     title={project.title}
-                    description={project.description.split('\n')[0]} // Show brief excerpt
+                    description={project.excerpt || project.description.split('\n')[0]}
                     imgPath={project.imgPath}
                     demoLink={`/project/${project.id}`} // Route to internal Case Study
                     customButtonText="Read Case Study"
@@ -118,7 +136,7 @@ function Home() {
         <Row className="spacing-vertical-lg">
           <Col xs={12} className="text-center">
             <span className="section-eyebrow">Recognition</span>
-            <h2 className="section-title">🏆 ACHIEVEMENTS & AWARDS</h2>
+            <h2 className="section-title"><FaTrophy className="title-icon" aria-hidden="true" /> ACHIEVEMENTS & AWARDS</h2>
             <div className="achievements-carousel">
               {HOME_ACHIEVEMENTS.map((achievement, index) => (
                 <div key={index} className="achievement-card" style={{ background: achievement.gradient }}>
@@ -126,6 +144,30 @@ function Home() {
                   <p className="achievement-card-description">{achievement.description}</p>
                 </div>
               ))}
+            </div>
+          </Col>
+        </Row>
+
+        {/* 5. CLOSING CTA */}
+        <Row className="spacing-vertical-lg">
+          <Col xs={12} lg={{ span: 10, offset: 1 }}>
+            <div className="glass-card home-cta text-center">
+              <span className="section-eyebrow">Contact</span>
+              <h2 className="home-cta-title">Have an idea? Let&apos;s build it <span>together</span>.</h2>
+              <p className="text-body-primary">
+                I&apos;m open to HCI research collaboration, UI/UX design work, and
+                education-technology projects.
+              </p>
+              <div className="d-flex flex-wrap gap-3 justify-content-center mt-4">
+                <Button as={Link} to="/resume" className="btn-gold">
+                  View My Resume <FaArrowRight />
+                </Button>
+                {mailLink && (
+                  <Button href={mailLink.url} className="btn-primary">
+                    <FaEnvelope /> Get in Touch
+                  </Button>
+                )}
+              </div>
             </div>
           </Col>
         </Row>
