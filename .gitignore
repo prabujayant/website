@@ -27,3 +27,9 @@ yarn-error.log*
 
 Server/node_modules
 Server/config.js
+.vercel
+
+# v2 (Vite app) - never commit dependencies or build output
+v2/node_modules
+v2/dist
+v2/dev.log
