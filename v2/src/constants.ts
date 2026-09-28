@@ -27,6 +27,12 @@ export type Project = {
   format?: string;
   /** Year — used for sorting in the browse table. */
   year?: number;
+  /**
+   * When true the card's button opens `demoLink` directly instead of the
+   * internal `/project/:id` case study. Useful for projects (like a personal
+   * portfolio) where the case-study page has nothing extra to add.
+   */
+  directLink?: boolean;
 };
 
 export const PROJECTS_DATA: Project[] = [
@@ -106,6 +112,20 @@ export const PROJECTS_DATA: Project[] = [
     year: 2024,
     excerpt:
       "A responsive digital journal about reflections and cultural learning during the PMM4 exchange program.",
+  },
+  {
+    id: 7,
+    title: "Personal Portfolio",
+    description:
+      "A personal portfolio designed to present my work across UX research, UI/UX design, educational technology, and research. The project focuses on creating a clear, professional experience that makes my work, background, and research easy to explore.",
+    demoLink: "https://sitiannisa.vercel.app/",
+    customButtonText: "View Project",
+    category: "Personal Project · 2026",
+    format: "Personal Portfolio Website",
+    year: 2026,
+    directLink: true,
+    excerpt:
+      "My own portfolio site, designed and built alone to present my research, projects, and background in one clear place.",
   },
 ];
 

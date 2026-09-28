@@ -9,15 +9,13 @@ import {
   HOME_ACHIEVEMENTS,
   PROJECTS_DATA,
   SKILL_GROUPS,
-  SOCIAL_LINKS,
 } from "../constants";
 import heroImg from "../assets/siti-photo.jpg";
-import resumeUrl from "../assets/CV_Siti_Annisa_Dahlan.pdf";
+import resumeUrl from "../assets/RESUME_SITI_ANNISA_DAHLAN.pdf";
 import { Particles } from "../components/Particles";
 import { Typewriter } from "../components/Typewriter";
 import { ProjectCard } from "../components/ProjectCard";
 import { FocusBubbles } from "../components/FocusBubbles";
-import { GithubIcon, LinkedinIcon, MailIcon } from "../components/BrandIcons";
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -26,16 +24,9 @@ export const Route = createRoute({
 });
 
 const STATS = [
-  { value: "7+", label: "Projects shipped" },
+  { value: "7+", label: "Publication & project" },
   { value: "2", label: "Journal publications" },
   { value: "4", label: "Awards & honors" },
-];
-
-/** The three contact icons shown in the resume card, in display order. */
-const CONTACT_ICONS = [
-  { id: "github", label: "GitHub", url: SOCIAL_LINKS.find((s) => s.id === "github")!.url, Icon: GithubIcon, ring: "#ffffff" },
-  { id: "linkedin", label: "LinkedIn", url: SOCIAL_LINKS.find((s) => s.id === "linkedin")!.url, Icon: LinkedinIcon, ring: "#0A66C2" },
-  { id: "mail", label: "Email", url: SOCIAL_LINKS.find((s) => s.id === "mail")!.url, Icon: MailIcon, ring: "#EA4335" },
 ];
 
 /** Colours the highlighted words inside the About copy in amber. */
@@ -88,8 +79,8 @@ function HomePage() {
             <p className="text-white/80">
               Hi There! <span role="img" aria-label="waving hand">👋</span>
             </p>
-            <h1 className="mt-3 text-5xl font-extrabold leading-tight md:text-6xl">
-              <span className="mr-3 align-middle text-2xl font-semibold text-white/70">I'M</span>
+            <h1 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+              <span className="mr-2 align-middle text-lg font-semibold text-white/70">I'M</span>
               SITI ANNISA DAHLAN
             </h1>
             <div className="mt-4 h-1 w-40 bg-gradient-to-r from-amber-300 via-fuchsia-400 to-cyan-300" />
@@ -113,13 +104,13 @@ function HomePage() {
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="#work"
-                className="rounded-lg bg-amber-300 px-5 py-2.5 font-semibold text-black hover:bg-amber-200"
+                className="btn-shine rounded-lg bg-amber-300 px-5 py-2.5 font-semibold text-black hover:bg-amber-200"
               >
                 View My Work ↓
               </a>
               <a
                 href="#about"
-                className="rounded-lg border border-white/25 px-5 py-2.5 hover:border-amber-300 hover:text-amber-300"
+                className="btn-shine rounded-lg border border-white/25 px-5 py-2.5 hover:border-amber-300 hover:text-amber-300"
               >
                 About Me
               </a>
@@ -127,7 +118,10 @@ function HomePage() {
 
             <dl className="mt-8 grid max-w-md grid-cols-3 gap-4">
               {STATS.map((s) => (
-                <div key={s.label} className="rounded-xl border border-white/10 bg-white/5 p-3 text-center">
+                <div
+                  key={s.label}
+                  className="live-card rounded-xl border border-white/10 bg-white/5 p-3 text-center"
+                >
                   <dd className="text-2xl font-bold text-amber-300">{s.value}</dd>
                   <dt className="mt-1 text-xs text-white/60">{s.label}</dt>
                 </div>
@@ -145,20 +139,14 @@ function HomePage() {
             <img
               src={heroImg}
               alt="Photo of Siti Annisa Dahlan"
-              className="relative w-full rounded-[1.75rem] border border-white/10 object-cover shadow-2xl"
+              className="live-glow relative w-full rounded-[1.75rem] border border-white/10 object-cover shadow-2xl"
             />
-            <div className="absolute -top-3 left-4 rounded-full bg-amber-300 px-3 py-1 text-xs font-bold text-black shadow-lg">
-              Published Researcher
-            </div>
-            <div className="absolute -bottom-3 right-4 rounded-full border border-white/15 bg-neutral-900 px-3 py-1 text-xs text-white/80 backdrop-blur">
-              UX Researcher &amp; Designer
-            </div>
           </div>
         </div>
       </section>
 
       {/* 2. ABOUT — "Know Who I Am" */}
-      <section id="about" className="scroll-mt-20 py-16 md:py-24">
+      <section id="about" className="scroll-mt-20 py-10 md:py-16">
         <div className="grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr]">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-amber-300">Introduction</p>
@@ -167,7 +155,7 @@ function HomePage() {
             </h2>
             <div className="mt-4 h-1 w-40 bg-gradient-to-r from-amber-300 via-fuchsia-400 to-cyan-300" />
 
-            <div className="mt-6 space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6 leading-relaxed text-white/75 backdrop-blur md:p-8">
+            <div className="live-card mt-6 space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6 leading-relaxed text-white/75 backdrop-blur md:p-8">
               {ABOUT_PARAGRAPHS.map((p, i) => (
                 <p key={i}>
                   <Highlighted text={p} />
@@ -181,7 +169,7 @@ function HomePage() {
           </div>
 
           <div className="relative">
-            <div className="rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6">
+            <div className="live-card rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6">
               <p className="text-xs uppercase tracking-[0.3em] text-amber-300">My process</p>
               <ol className="mt-5 space-y-5">
                 {DESIGN_PROCESS.map((s) => (
@@ -200,7 +188,7 @@ function HomePage() {
       </section>
 
       {/* 3. SKILLS */}
-      <section id="skills" className="scroll-mt-20 py-16 md:py-24">
+      <section id="skills" className="scroll-mt-20 py-10 md:py-16">
         <SectionHead eyebrow="What I do" title="Core Skills|and Domains" />
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm tracking-wide text-white/65">
           UX Research · Interaction Design · Educational Technology
@@ -209,7 +197,7 @@ function HomePage() {
           {SKILL_GROUPS.map((g) => (
             <div
               key={g.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-amber-300/40"
+              className="live-card rounded-2xl border border-white/10 bg-white/5 p-6"
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-lg font-bold text-amber-300">{g.title}</h3>
@@ -237,7 +225,7 @@ function HomePage() {
       </section>
 
       {/* 4. EXPERIENCE */}
-      <section id="experience" className="scroll-mt-20 py-16 md:py-24">
+      <section id="experience" className="scroll-mt-20 py-10 md:py-16">
         <SectionHead eyebrow="My journey" title="Work|and Experience" />
         <div className="timeline-rail relative mt-10 space-y-6 md:ml-4">
           {EXPERIENCE_TIMELINE.map((e) => (
@@ -247,7 +235,7 @@ function HomePage() {
                   e.current ? "bg-amber-300" : "bg-neutral-950"
                 }`}
               />
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 transition-all duration-300 hover:border-amber-300/40">
+              <div className="live-card rounded-2xl border border-white/10 bg-white/5 p-5">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <h3 className="text-lg font-bold">{e.role}</h3>
                   {e.current ? (
@@ -277,7 +265,7 @@ function HomePage() {
       </section>
 
       {/* 5. FEATURED WORK */}
-      <section id="work" className="scroll-mt-20 py-16 md:py-24">
+      <section id="work" className="scroll-mt-20 py-10 md:py-16">
         <SectionHead eyebrow="Selected work" title="Featured|Case Studies" />
         <div className="mt-8 grid gap-5 text-left md:grid-cols-2">
           {featured.map((p) => (
@@ -297,7 +285,7 @@ function HomePage() {
         <div className="mt-8 text-center">
           <Link
             to="/project"
-            className="inline-block rounded-lg border border-white/25 px-5 py-2.5 hover:border-amber-300 hover:text-amber-300"
+            className="btn-shine inline-block rounded-lg border border-white/25 px-5 py-2.5 hover:border-amber-300 hover:text-amber-300"
           >
             View All Publications &amp; Projects
           </Link>
@@ -305,11 +293,14 @@ function HomePage() {
       </section>
 
       {/* 6. ACHIEVEMENTS */}
-      <section className="py-16 md:py-24">
+      <section id="achievements" className="scroll-mt-20 py-10 md:py-16">
         <SectionHead eyebrow="Recognition" title="Achievements|& Awards" />
         <div className="mt-8 grid gap-5 text-left sm:grid-cols-2">
           {HOME_ACHIEVEMENTS.map((a) => (
-            <div key={a.title} className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <div
+              key={a.title}
+              className="live-card overflow-hidden rounded-2xl border border-white/10 bg-white/5"
+            >
               <div className="h-1.5" style={{ background: a.gradient }} />
               <div className="p-5">
                 <h4 className="font-semibold text-white">{a.title}</h4>
@@ -320,54 +311,31 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 7. RESUME / CTA */}
+      {/* 7. RESUME / CTA — deliberately flat: no glow, no shine sweep, no
+          gradient. Just type, space, and two quiet buttons. */}
       <section id="resume" className="scroll-mt-20 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-amber-300">Resume</p>
-          <h2 className="mt-2 text-3xl font-bold">
-            Want the full story? <span className="text-amber-300">Download my CV</span>
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-white/65">
-            I'm open to HCI research collaboration, UI/UX design work, and education-technology projects
-            together.
+          <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">Explore My Background</h2>
+          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/60">
+            View my experience, education, research, and selected work.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a
-              href={resumeUrl}
-              download="CV_Siti_Annisa_Dahlan.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-lg bg-amber-300 px-5 py-2.5 font-semibold text-black hover:bg-amber-200"
-            >
-              ⭳ View My Resume
-            </a>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/resume"
-              className="rounded-lg border border-white/25 px-5 py-2.5 hover:border-amber-300 hover:text-amber-300"
+              className="rounded-lg bg-amber-300 px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-amber-200"
             >
-              Open Full Resume Page
+              View Resume →
             </Link>
-          </div>
-
-          {/* Contact icons — official brand marks, matched to their brand colours. */}
-          <div className="mt-8 border-t border-white/10 pt-6">
-            <p className="text-xs uppercase tracking-[0.25em] text-white/45">Contact</p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              {CONTACT_ICONS.map(({ id, label, url, Icon, ring }) => (
-                <a
-                  key={id}
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={label}
-                  title={label}
-                  className="grid h-11 w-11 place-items-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
-                  style={{ boxShadow: `inset 0 0 0 1px ${ring}22` }}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
+            <a
+              href={resumeUrl}
+              download="RESUME_SITI_ANNISA_DAHLAN.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border border-white/20 px-6 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-amber-300/60 hover:text-amber-300"
+            >
+              Download CV ↓
+            </a>
           </div>
         </div>
       </section>

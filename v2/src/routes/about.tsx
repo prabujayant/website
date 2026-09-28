@@ -109,7 +109,7 @@ function AboutPage() {
           {COMPETENCIES.map((c) => (
             <div
               key={c.title}
-              className="rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center transition-transform duration-300 hover:-translate-y-2"
+              className="live-card rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center"
             >
               <p className="text-white">
                 <strong className="text-amber-300">{c.title}:</strong> {c.body}
@@ -123,7 +123,7 @@ function AboutPage() {
           {PROCESS.map((c) => (
             <div
               key={c.title}
-              className="rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center transition-transform duration-300 hover:-translate-y-2"
+              className="live-card rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center"
             >
               <p className="text-white">
                 <strong className="text-amber-300">{c.title}:</strong> {c.body}
@@ -137,7 +137,7 @@ function AboutPage() {
           {TOOLS.map((t) => (
             <div
               key={t}
-              className="rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center transition-transform duration-300 hover:-translate-y-2"
+              className="live-card rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center"
             >
               <div className="text-3xl">✦</div>
               <div className="mt-2 text-white">{t}</div>

@@ -23,7 +23,7 @@ export function ProjectCard(props: ProjectCardProps) {
   const [liked, setLiked] = useState(false);
 
   return (
-    <article className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+    <article className="live-card relative flex w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5">
       <button
         type="button"
         onClick={() => setLiked((v) => !v)}

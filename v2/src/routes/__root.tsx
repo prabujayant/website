@@ -1,27 +1,32 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, Outlet, createRootRoute, useNavigate, useRouterState } from "@tanstack/react-router";
 import { SOCIAL_LINKS } from "../constants";
 import { scrollToSection, useScrollSpy } from "../components/ScrollSpyNav";
-import { GithubIcon, LinkedinIcon, MailIcon } from "../components/BrandIcons";
 
-/** Single-page style sections the navbar can jump to. */
-const SECTION_IDS = ["home", "about", "skills", "experience", "resume"] as const;
+/**
+ * Sections the navbar tracks while scrolling the home page.
+ * "work" is included so the "Publication & Project" link lights up while the
+ * Featured Case Studies block is on screen.
+ */
+const SECTION_IDS = ["home", "about", "skills", "experience", "work", "resume"] as const;
 
 /**
  * One unified navbar list: Home, About, Skills, Experience, Publication & Project, Resume.
  * "section" items scroll within the home page; "route" items open their own page.
+ * A route item may also list home sections it "covers", so the nav stays lit
+ * while reading that part of the home page instead of going dark.
  */
 type NavItem =
   | { kind: "section"; id: string; label: string }
-  | { kind: "route"; to: string; label: string };
+  | { kind: "route"; to: string; label: string; covers?: readonly string[] };
 
 const NAV: NavItem[] = [
   { kind: "section", id: "home", label: "Home" },
   { kind: "section", id: "about", label: "About" },
   { kind: "section", id: "skills", label: "Skills" },
   { kind: "section", id: "experience", label: "Experience" },
-  { kind: "route", to: "/project", label: "Publication & Project" },
-  { kind: "route", to: "/resume", label: "Resume" },
+  { kind: "route", to: "/project", label: "Publication & Project", covers: ["work", "achievements"] },
+  { kind: "route", to: "/resume", label: "Resume", covers: ["resume"] },
 ];
 
 function Layout() {
@@ -33,7 +38,8 @@ function Layout() {
   const year = new Date().getFullYear();
 
   const isHome = pathname === "/";
-  const activeSection = useScrollSpy(isHome ? SECTION_IDS.map(String) : [], 90);
+  const spyIds = useMemo(() => (isHome ? SECTION_IDS.map(String) : []), [isHome]);
+  const activeSection = useScrollSpy(spyIds, 90);
   const navigate = useNavigate();
 
   /** Section links stay on the home page; route links open their own page. */
@@ -57,8 +63,10 @@ function Layout() {
   const isNavActive = useCallback(
     (item: NavItem) => {
       if (item.kind === "section") return isHome && activeSection === item.id;
-      if (item.to === "/project") return pathname === "/project" || pathname.startsWith("/project/");
-      return pathname === item.to;
+      // A route link is lit on its own pages, and also whenever the home
+      // section(s) it covers is the one being read.
+      if (pathname === item.to || pathname.startsWith(`${item.to}/`)) return true;
+      return isHome && !!activeSection && (item.covers?.includes(activeSection) ?? false);
     },
     [isHome, activeSection, pathname],
   );
@@ -156,46 +164,35 @@ function Layout() {
       </main>
 
       <footer className="border-t border-white/10 bg-black/40">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 py-10 text-center">
-          <p className="text-base text-white/80">
-            by <span className="font-semibold text-white">Siti Annisa Dahlan</span>
-          </p>
+        <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-12 text-center">
+          <p className="text-base font-semibold tracking-wide text-white">Siti Annisa Dahlan</p>
+          <p className="mt-1 text-sm text-white/60">UX Researcher · UI/UX Designer</p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {/* GitHub — symbol only, no text label */}
-            <a
-              href={SOCIAL_LINKS.find((s) => s.id === "github")!.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              title="GitHub"
-              className="rounded-full border border-white/15 p-3 text-white/75 transition-colors hover:border-amber-300 hover:text-amber-300"
-            >
-              <GithubIcon className="h-5 w-5" />
-            </a>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
             <a
               href={SOCIAL_LINKS.find((s) => s.id === "linkedin")!.url}
               target="_blank"
               rel="noreferrer"
-              aria-label="LinkedIn"
-              title="LinkedIn"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-sm text-white/75 transition-colors hover:border-amber-300 hover:text-amber-300"
+              className="footer-link"
             >
-              <LinkedinIcon className="h-4 w-4" />
               LinkedIn
             </a>
             <a
-              href={SOCIAL_LINKS.find((s) => s.id === "mail")!.url}
-              aria-label="Email"
-              title="Email"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-sm text-white/75 transition-colors hover:border-amber-300 hover:text-amber-300"
+              href={SOCIAL_LINKS.find((s) => s.id === "github")!.url}
+              target="_blank"
+              rel="noreferrer"
+              className="footer-link"
             >
-              <MailIcon className="h-4 w-4" />
+              GitHub
+            </a>
+            <a href={SOCIAL_LINKS.find((s) => s.id === "mail")!.url} className="footer-link">
               Email
             </a>
           </div>
 
-          <p className="text-xs text-white/40">Copyright © {year}</p>
+          <p className="mt-8 text-xs text-white/40">
+            © {year} Siti Annisa Dahlan
+          </p>
         </div>
       </footer>
 

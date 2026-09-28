@@ -39,7 +39,7 @@ function ProjectsPage() {
             isBlog={p.isBlog ?? false}
             title={p.title}
             description={p.description}
-            demoLink={p.isBlog ? p.demoLink : `/project/${p.id}`}
+            demoLink={p.isBlog || p.directLink ? p.demoLink : `/project/${p.id}`}
             customButtonText={p.customButtonText}
             meta={p.meta}
             category={p.category}
