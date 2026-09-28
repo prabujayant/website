@@ -19,7 +19,11 @@ const columns = [
   }),
   columnHelper.accessor("isBlog", {
     header: "Type",
-    cell: (info) => (info.getValue() ? "Blog / Article" : "Project"),
+    cell: (info) => (info.getValue() ? "Publication" : "Project"),
+  }),
+  columnHelper.accessor("year", {
+    header: "Year",
+    cell: (info) => <span className="text-white/60">{info.getValue() ?? "—"}</span>,
   }),
   columnHelper.accessor("demoLink", {
     header: "Link",

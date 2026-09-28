@@ -3,6 +3,7 @@ import { Route as RootRoute } from "./__root";
 import {
   ABOUT_HIGHLIGHTS,
   ABOUT_PARAGRAPHS,
+  DESIGN_PROCESS,
   EXPERIENCE_TIMELINE,
   HERO_TAGLINE,
   HOME_ACHIEVEMENTS,
@@ -16,6 +17,7 @@ import { Particles } from "../components/Particles";
 import { Typewriter } from "../components/Typewriter";
 import { ProjectCard } from "../components/ProjectCard";
 import { FocusBubbles } from "../components/FocusBubbles";
+import { GithubIcon, LinkedinIcon, MailIcon } from "../components/BrandIcons";
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -27,6 +29,13 @@ const STATS = [
   { value: "7+", label: "Projects shipped" },
   { value: "2", label: "Journal publications" },
   { value: "4", label: "Awards & honors" },
+];
+
+/** The three contact icons shown in the resume card, in display order. */
+const CONTACT_ICONS = [
+  { id: "github", label: "GitHub", url: SOCIAL_LINKS.find((s) => s.id === "github")!.url, Icon: GithubIcon, ring: "#ffffff" },
+  { id: "linkedin", label: "LinkedIn", url: SOCIAL_LINKS.find((s) => s.id === "linkedin")!.url, Icon: LinkedinIcon, ring: "#0A66C2" },
+  { id: "mail", label: "Email", url: SOCIAL_LINKS.find((s) => s.id === "mail")!.url, Icon: MailIcon, ring: "#EA4335" },
 ];
 
 /** Colours the highlighted words inside the About copy in amber. */
@@ -67,7 +76,6 @@ function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
 
 function HomePage() {
   const featured = PROJECTS_DATA.slice(0, 2);
-  const mail = SOCIAL_LINKS.find((s) => s.id === "mail");
 
   return (
     <div className="relative space-y-0">
@@ -151,7 +159,7 @@ function HomePage() {
 
       {/* 2. ABOUT — "Know Who I Am" */}
       <section id="about" className="scroll-mt-20 py-16 md:py-24">
-        <div className="grid items-start gap-10 md:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr]">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-amber-300">Introduction</p>
             <h2 className="mt-2 text-3xl font-bold md:text-4xl">
@@ -173,37 +181,19 @@ function HomePage() {
           </div>
 
           <div className="relative">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-              <p className="text-xs uppercase tracking-[0.3em] text-amber-300">Quick facts</p>
-              <dl className="mt-4 space-y-3 text-sm">
-                <div className="flex justify-between gap-4 border-b border-white/10 pb-2">
-                  <dt className="text-white/60">Name</dt>
-                  <dd className="text-right font-semibold">Siti Annisa Dahlan, B.Ed</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-white/10 pb-2">
-                  <dt className="text-white/60">Based in</dt>
-                  <dd className="text-right font-semibold">Kendari, Indonesia</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-white/10 pb-2">
-                  <dt className="text-white/60">Current role</dt>
-                  <dd className="text-right font-semibold">UI/UX &amp; Research @ FlyRank AI</dd>
-                </div>
-                <div className="flex justify-between gap-4 border-b border-white/10 pb-2">
-                  <dt className="text-white/60">Publications</dt>
-                  <dd className="text-right font-semibold text-amber-300">2 peer-reviewed</dd>
-                </div>
-                <div className="flex justify-between gap-4">
-                  <dt className="text-white/60">Languages</dt>
-                  <dd className="text-right font-semibold">English · Indonesian</dd>
-                </div>
-              </dl>
-            </div>
-
-            <div className="mt-5 rounded-2xl border border-amber-300/25 bg-amber-300/5 p-6">
-              <p className="text-sm italic leading-relaxed text-white/80">
-                “I enjoy turning complex user needs into simple, useful digital experiences.”
-              </p>
-              <p className="mt-2 text-sm text-amber-300">— Siti Annisa Dahlan</p>
+            <div className="rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-amber-300">My process</p>
+              <ol className="mt-5 space-y-5">
+                {DESIGN_PROCESS.map((s) => (
+                  <li key={s.step} className="flex gap-4">
+                    <span className="shrink-0 font-mono text-sm font-bold text-amber-300">{s.step}</span>
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-widest text-amber-300">{s.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-white/75">{s.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </div>
@@ -269,6 +259,9 @@ function HomePage() {
                 <p className="mt-1 text-sm font-medium text-amber-300">
                   {e.org} <span className="text-white/50">· {e.period}</span>
                 </p>
+                {e.location ? (
+                  <p className="mt-0.5 text-xs font-normal text-white/45">{e.location}</p>
+                ) : null}
                 <ul className="mt-3 space-y-1.5 text-sm text-white/70">
                   {e.points.map((pt) => (
                     <li key={pt} className="flex gap-2">
@@ -294,7 +287,10 @@ function HomePage() {
               title={p.title}
               description={p.excerpt ?? p.description.split("\n")[0]}
               demoLink={`/project/${p.id}`}
-              customButtonText="Read Case Study"
+              customButtonText={p.isBlog ? "View Publication" : "Read Case Study"}
+              meta={p.meta}
+              category={p.category}
+              format={p.format}
             />
           ))}
         </div>
@@ -303,7 +299,7 @@ function HomePage() {
             to="/project"
             className="inline-block rounded-lg border border-white/25 px-5 py-2.5 hover:border-amber-300 hover:text-amber-300"
           >
-            View All Projects
+            View All Publications &amp; Projects
           </Link>
         </div>
       </section>
@@ -324,38 +320,16 @@ function HomePage() {
         </div>
       </section>
 
-      {/* 7. FIND ME ON */}
-      <section className="py-16 md:py-24">
-        <h2 className="text-center text-3xl font-bold">🌐 FIND ME ON</h2>
-        <p className="mt-3 text-center text-white/65">
-          Feel free to <span className="text-amber-300">connect</span> with me on these platforms:
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-4">
-          {SOCIAL_LINKS.slice(0, 3).map((s) => (
-            <a
-              key={s.id}
-              href={s.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={s.label}
-              title={s.label}
-              className="rounded-2xl border border-white/15 bg-white/5 px-8 py-5 text-sm font-semibold text-white/80 transition-transform duration-300 hover:-translate-y-1"
-            >
-              {s.label}
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* 8. RESUME / CTA */}
-      <section id="resume" className="scroll-mt-20 pb-16 pt-6 md:pb-24">
+      {/* 7. RESUME / CTA */}
+      <section id="resume" className="scroll-mt-20 py-16 md:py-24">
         <div className="mx-auto max-w-4xl rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur">
           <p className="text-xs uppercase tracking-[0.3em] text-amber-300">Resume</p>
           <h2 className="mt-2 text-3xl font-bold">
             Want the full story? <span className="text-amber-300">Download my CV</span>
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-white/65">
-            I'm open to HCI research collaboration, UI/UX design work, and education-technology projects.
+            I'm open to HCI research collaboration, UI/UX design work, and education-technology projects
+            together.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a
@@ -373,14 +347,27 @@ function HomePage() {
             >
               Open Full Resume Page
             </Link>
-            {mail ? (
-              <a
-                href={mail.url}
-                className="rounded-lg border border-white/25 px-5 py-2.5 hover:border-amber-300 hover:text-amber-300"
-              >
-                ✉ Get in Touch
-              </a>
-            ) : null}
+          </div>
+
+          {/* Contact icons — official brand marks, matched to their brand colours. */}
+          <div className="mt-8 border-t border-white/10 pt-6">
+            <p className="text-xs uppercase tracking-[0.25em] text-white/45">Contact</p>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+              {CONTACT_ICONS.map(({ id, label, url, Icon, ring }) => (
+                <a
+                  key={id}
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="grid h-11 w-11 place-items-center rounded-xl border border-white/15 bg-white/5 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
+                  style={{ boxShadow: `inset 0 0 0 1px ${ring}22` }}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -1,23 +1,28 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link, Outlet, createRootRoute, useRouterState } from "@tanstack/react-router";
+import { Link, Outlet, createRootRoute, useNavigate, useRouterState } from "@tanstack/react-router";
 import { SOCIAL_LINKS } from "../constants";
 import { scrollToSection, useScrollSpy } from "../components/ScrollSpyNav";
+import { GithubIcon, LinkedinIcon, MailIcon } from "../components/BrandIcons";
 
 /** Single-page style sections the navbar can jump to. */
 const SECTION_IDS = ["home", "about", "skills", "experience", "resume"] as const;
 
-const NAV = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "experience", label: "Experience" },
-  { id: "resume", label: "Resume" },
-] as const;
+/**
+ * One unified navbar list: Home, About, Skills, Experience, Publication & Project, Resume.
+ * "section" items scroll within the home page; "route" items open their own page.
+ */
+type NavItem =
+  | { kind: "section"; id: string; label: string }
+  | { kind: "route"; to: string; label: string };
 
-const ROUTE_NAV = [
-  { to: "/project", label: "Projects" },
-  { to: "/resume", label: "Resume" },
-] as const;
+const NAV: NavItem[] = [
+  { kind: "section", id: "home", label: "Home" },
+  { kind: "section", id: "about", label: "About" },
+  { kind: "section", id: "skills", label: "Skills" },
+  { kind: "section", id: "experience", label: "Experience" },
+  { kind: "route", to: "/project", label: "Publication & Project" },
+  { kind: "route", to: "/resume", label: "Resume" },
+];
 
 function Layout() {
   const [open, setOpen] = useState(false);
@@ -29,14 +34,33 @@ function Layout() {
 
   const isHome = pathname === "/";
   const activeSection = useScrollSpy(isHome ? SECTION_IDS.map(String) : [], 90);
+  const navigate = useNavigate();
 
-  const go = useCallback(
-    (id: string) => {
+  /** Section links stay on the home page; route links open their own page. */
+  const goTo = useCallback(
+    (item: NavItem) => {
       setOpen(false);
-      if (!isHome) return;
-      scrollToSection(id);
+      if (item.kind === "section") {
+        if (isHome) {
+          scrollToSection(item.id);
+        } else {
+          // Land on the home page first, then jump to the requested section.
+          navigate({ to: "/", hash: item.id });
+        }
+        return;
+      }
+      void navigate({ to: item.to });
     },
-    [isHome],
+    [isHome, navigate],
+  );
+
+  const isNavActive = useCallback(
+    (item: NavItem) => {
+      if (item.kind === "section") return isHome && activeSection === item.id;
+      if (item.to === "/project") return pathname === "/project" || pathname.startsWith("/project/");
+      return pathname === item.to;
+    },
+    [isHome, activeSection, pathname],
   );
 
   useEffect(() => {
@@ -65,9 +89,9 @@ function Layout() {
           <p className="animate-pulse text-2xl font-bold tracking-widest text-amber-300">Portfolio</p>
         </div>
       ) : null}
-      {/* Sticky navbar — stays visible while scrolling down */}
+      {/* Fixed navbar — stays pinned to the top of the window at all times */}
       <nav
-        className={`sticky top-0 z-30 border-b backdrop-blur transition-colors ${
+        className={`fixed inset-x-0 top-0 z-30 border-b backdrop-blur transition-colors ${
           scrolled ? "border-amber-300/30 bg-neutral-950/95 shadow-lg shadow-black/40" : "border-white/10 bg-neutral-950/80"
         }`}
       >
@@ -88,41 +112,20 @@ function Layout() {
           {/* Desktop links */}
           <div className="ml-auto hidden items-center gap-5 text-sm text-white/80 md:flex">
             {NAV.map((n) => {
-              const isActive = isHome && activeSection === n.id;
-              if (isHome) {
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => go(n.id)}
-                    data-active={isActive}
-                    className="nav-link text-left"
-                    aria-current={isActive ? "true" : undefined}
-                  >
-                    <span className={isActive ? "text-amber-300" : undefined}>{n.label}</span>
-                  </button>
-                );
-              }
+              const isActive = isNavActive(n);
               return (
-                <Link
-                  key={n.id}
-                  to="/"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    go(n.id);
-                  }}
-                  className="nav-link"
+                <button
+                  key={n.label}
+                  type="button"
+                  onClick={() => goTo(n)}
+                  data-active={isActive}
+                  className="nav-link text-left"
+                  aria-current={isActive ? "true" : undefined}
                 >
-                  {n.label}
-                </Link>
+                  <span className={isActive ? "text-amber-300" : undefined}>{n.label}</span>
+                </button>
               );
             })}
-            <span className="h-5 w-px bg-white/15" />
-            {ROUTE_NAV.map((n) => (
-              <Link key={n.to} to={n.to} className="nav-link" data-active={pathname === n.to}>
-                {n.label}
-              </Link>
-            ))}
           </div>
         </div>
 
@@ -131,66 +134,68 @@ function Layout() {
           <div className="flex flex-col gap-1 border-t border-white/10 px-4 py-3 text-sm md:hidden">
             {NAV.map((n) => (
               <button
-                key={n.id}
+                key={n.label}
                 type="button"
-                onClick={() => go(n.id)}
+                onClick={() => goTo(n)}
                 className={`rounded px-2 py-2 text-left hover:bg-white/5 ${
-                  isHome && activeSection === n.id ? "text-amber-300" : ""
+                  isNavActive(n) ? "text-amber-300" : ""
                 }`}
               >
                 {n.label}
               </button>
             ))}
-            {ROUTE_NAV.map((n) => (
-              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="rounded px-2 py-2 hover:bg-white/5 hover:text-amber-300">
-                {n.label}
-              </Link>
-            ))}
           </div>
         ) : null}
       </nav>
+
+      {/* Spacer so the fixed navbar does not cover the top of the page */}
+      <div className="h-16" />
 
       <main className="mx-auto max-w-6xl px-4 pb-12">
         <Outlet />
       </main>
 
       <footer className="border-t border-white/10 bg-black/40">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
-          <div>
-            <h3 className="font-semibold">Designed and Developed by Siti Annisa Dahlan</h3>
-            <nav aria-label="Footer" className="mt-3 flex flex-wrap gap-4 text-sm">
-              {NAV.map((n) => (
-                <button
-                  key={n.id}
-                  type="button"
-                  onClick={() => go(n.id)}
-                  className="text-white/70 hover:text-amber-300"
-                >
-                  {n.label}
-                </button>
-              ))}
-            </nav>
-            <p className="mt-3 text-sm text-white/50">HCI Research • UI/UX Design • English Education</p>
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-4 py-10 text-center">
+          <p className="text-base text-white/80">
+            by <span className="font-semibold text-white">Siti Annisa Dahlan</span>
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {/* GitHub — symbol only, no text label */}
+            <a
+              href={SOCIAL_LINKS.find((s) => s.id === "github")!.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+              className="rounded-full border border-white/15 p-3 text-white/75 transition-colors hover:border-amber-300 hover:text-amber-300"
+            >
+              <GithubIcon className="h-5 w-5" />
+            </a>
+            <a
+              href={SOCIAL_LINKS.find((s) => s.id === "linkedin")!.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-sm text-white/75 transition-colors hover:border-amber-300 hover:text-amber-300"
+            >
+              <LinkedinIcon className="h-4 w-4" />
+              LinkedIn
+            </a>
+            <a
+              href={SOCIAL_LINKS.find((s) => s.id === "mail")!.url}
+              aria-label="Email"
+              title="Email"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-sm text-white/75 transition-colors hover:border-amber-300 hover:text-amber-300"
+            >
+              <MailIcon className="h-4 w-4" />
+              Email
+            </a>
           </div>
-          <div className="md:text-center">
-            <h3 className="text-white/70">Copyright © {year}</h3>
-          </div>
-          <div className="flex flex-wrap gap-2 md:justify-end">
-            {SOCIAL_LINKS.map((s) => (
-              <a
-                key={s.id}
-                href={s.url}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                title={s.label}
-                className="rounded-lg border border-white/15 px-3 py-2 text-sm text-white/75 hover:border-amber-300 hover:text-amber-300"
-              >
-                <span className="mr-1.5 inline-block h-2 w-2 rounded-full" style={{ background: s.color }} />
-                {s.label}
-              </a>
-            ))}
-          </div>
+
+          <p className="text-xs text-white/40">Copyright © {year}</p>
         </div>
       </footer>
 

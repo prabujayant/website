@@ -6,11 +6,9 @@ export type SocialLink = {
 };
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { id: "linkedin", label: "LinkedIn", url: "https://linkedin.com/in/siti-annisa-dahlan", color: "#0077b5" },
-  { id: "instagram", label: "Instagram", url: "https://www.instagram.com/an_nzaaa?igsh=NzYzcmt3cDE1YzVo", color: "#e4405f" },
+  { id: "github", label: "GitHub", url: "https://github.com/liquiud-s", color: "#ffffff" },
+  { id: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/sitiannisadahlan", color: "#0077b5" },
   { id: "mail", label: "Email", url: "mailto:sitiannisadahlan50@gmail.com", color: "#bb001b" },
-  { id: "tiktok", label: "TikTok", url: "https://www.tiktok.com/@anotherpageunlocked_?is_from_webapp=1&sender_device=pc", color: "#69C9D0" },
-  { id: "twitter", label: "Twitter", url: "https://x.com/apageunlocked_", color: "#1DA1F2" },
 ];
 
 export type Project = {
@@ -21,59 +19,93 @@ export type Project = {
   isBlog?: boolean;
   customButtonText?: string;
   excerpt?: string;
+  /** Venue line for publications, e.g. "IJOPATE 2025". */
+  meta?: string;
+  /** Category line for projects, e.g. "UX / HCI Project · 2026". */
+  category?: string;
+  /** Short format label, e.g. "Web Prototype". */
+  format?: string;
+  /** Year — used for sorting in the browse table. */
+  year?: number;
 };
 
 export const PROJECTS_DATA: Project[] = [
   {
     id: 1,
-    title: "AI in English Language Learning: Balancing Innovation, Opportunity and Human Connection",
-    description: "Journal Article / Peer-reviewed in International Journal of Pedagogy, Technology and Education (IJOPATE). Tags: Publication, ELT, Artificial Intelligence.",
+    title: "AI in English Language Learning",
+    description:
+      "A research study examining how AI can be integrated into English language learning while maintaining meaningful human connection. The study explores opportunities, challenges, and human-centered approaches to AI-supported language education.",
     demoLink: "https://ejournal.gomit.id/ijopate/article/view/586",
     isBlog: true,
-    customButtonText: "Read Article",
-    excerpt: "Peer-reviewed journal article on AI in English language learning — balancing innovation with human connection.",
-  },
-  {
-    id: 7,
-    title: "User Experience Audit of Three Popular Language Learning Apps: A Heuristic Evaluation of Duolingo, Babbel, and ELSA Speak",
-    description: "Journal Article / Peer-reviewed in The Journal of Social Media for Learning (JSML), Vol. 1 No. 1 (2026), Liverpool John Moores University. Published 1 September 2026. DOI: 10.24377/LJMU.jsml.article3570. Tags: Publication, HCI, UX Research, Heuristic Evaluation, MALL.",
-    demoLink: "https://openjournals.ljmu.ac.uk/JSML/article/view/3570",
-    isBlog: true,
-    customButtonText: "Read Article",
-    excerpt: "Multi-evaluator heuristic evaluation of Duolingo, Babbel, and ELSA Speak using Nielsen's 10 Usability Heuristics — and the original Pedagogical Usability framework.",
+    customButtonText: "View Publication",
+    meta: "IJOPATE 2025",
+    year: 2025,
+    excerpt:
+      "Peer-reviewed study on how AI can support English language learning without losing the human connection.",
   },
   {
     id: 2,
-    title: "TaskFlow — Academic Deadline Management",
-    description: "Tags: UI/UX, HCI, Prototype, HTML\nProblem: Students miss deadlines because info is spread across WhatsApp, LMS, email, and classroom — no central place to track.\nSolution / outcome: Reduced cognitive load through one dashboard with clear visual prioritization — designed via Research → Wireframe → Prototype → Web Implementation.",
-    demoLink: "https://liquiud-s.github.io/firstproject.github.io/",
-    excerpt: "Centralized academic deadline dashboard that cuts cognitive load — from user research to shipped prototype.",
+    title: "User Experience Audit of Three Popular Language Learning Apps",
+    description:
+      "A multi-evaluator UX and heuristic evaluation of Duolingo, Babbel, and ELSA Speak. The research examines usability, accessibility, learner experience, and pedagogical usability across the three applications.",
+    demoLink: "https://openjournals.ljmu.ac.uk/JSML/article/view/3570",
+    isBlog: true,
+    customButtonText: "View Publication",
+    meta: "JSML 2026",
+    year: 2026,
+    excerpt:
+      "Heuristic evaluation of Duolingo, Babbel, and ELSA Speak — covering usability, accessibility, and pedagogical usability.",
   },
   {
     id: 3,
-    title: "Think Ink — Gamified Reading Platform",
-    description: "A responsive gamified reading platform applying minimalist UI principles and user-centered information architecture. Features progress tracking and visual rewards for a 30% retention improvement.",
-    demoLink: "https://thinkinkreading2025.weebly.com",
+    title: "TaskFlow: Academic Deadline Management",
+    description:
+      "A student-focused platform designed to bring scattered academic deadlines into one place. TaskFlow uses clear information hierarchy and prioritization to help students understand what needs attention and act on it quickly.",
+    demoLink: "https://liquiud-s.github.io/firstproject.github.io/",
+    customButtonText: "View Project",
+    category: "UX / HCI Project · 2026",
+    format: "Web Prototype",
+    year: 2026,
+    excerpt:
+      "One dashboard that pulls scattered academic deadlines into a single, prioritized view.",
   },
   {
     id: 4,
-    title: "ReadingWithAnnis — Book Review Blog",
-    description: "Independently developed book review blog achieving a 90+ Lighthouse score. Applied UI/UX best practices like typography contrast and whitespace to reduce reading friction by 25%.",
-    demoLink: "https://readingwithannis.vercel.app",
-    isBlog: true,
+    title: "ReadingWithAnnis",
+    description:
+      "A responsive book review platform designed around readability, clear typography, and simple content navigation. The project focuses on reducing visual friction and creating a comfortable reading experience.",
+    demoLink: "https://thinkinkreading2025.weebly.com/",
+    customButtonText: "View Project",
+    category: "UI / UX Project · 2025",
+    format: "Web Project",
+    year: 2025,
+    excerpt:
+      "A book review platform built around readability, clear typography, and simple content navigation.",
   },
   {
     id: 5,
-    title: "Digital English Book (Book Creator)",
-    description: "A collaborative project featuring student-generated English texts and listening activities, designed to enhance learning outcomes for junior high school students.",
-    demoLink: "https://read.bookcreator.com/kWWJwNINR0dg7GPkPfi4sdGpygH2/99UftvSAQ4yveIKrRaXmVw",
+    title: "Digital English Book",
+    description:
+      "A collaborative digital book project combining student-generated English texts with listening activities. It was designed to support language practice through interactive and multimedia learning experiences.",
+    demoLink: "https://read.bookcreator.com/kWWJwNINR0dg7GPkPfi4sdGpygH2/99UftvSAQ4yveIKrRaXmVw/UMzzAa4yQOOy12r08o3heg",
+    customButtonText: "View Project",
+    category: "EdTech Project · 2026",
+    year: 2026,
+    excerpt:
+      "Student-generated English texts paired with listening activities in an interactive digital book.",
   },
   {
     id: 6,
-    title: "Explore With Annis – Exchange Blog",
-    description: "Documenting reflections and cultural growth during the PMM4 student exchange program, providing insights into international academic experiences.",
-    demoLink: "https://explorewithannis.weebly.com",
-    isBlog: true,
+    title: "Explore With Annis",
+    description:
+      "A digital journal documenting experiences, reflections, and cultural learning during my student exchange program. The project combines personal storytelling with responsive web design.",
+    demoLink: "https://explorewithannis.weebly.com/",
+    customButtonText: "View Project",
+    category: "Personal Project · 2024",
+    format: "PMM4 Student Exchange",
+    year: 2024,
+    excerpt:
+      "A responsive digital journal about reflections and cultural learning during the PMM4 exchange program.",
   },
 ];
 
@@ -135,6 +167,13 @@ export const ABOUT_PARAGRAPHS: string[] = [
   "I enjoy turning complex user needs into simple, useful digital experiences.",
 ];
 
+/** The three-step design process shown in the About sidebar bubble. */
+export const DESIGN_PROCESS: { step: string; title: string; body: string }[] = [
+  { step: "01", title: "Research", body: "Understand people, behaviors, and needs." },
+  { step: "02", title: "Design", body: "Turn insights into clear, usable experiences." },
+  { step: "03", title: "Iterate", body: "Test, learn, and improve the solution." },
+];
+
 /** Words highlighted in amber inside the About copy. */
 export const ABOUT_HIGHLIGHTS: string[] = [
   "UX research",
@@ -187,6 +226,8 @@ export type ExperienceItem = {
   role: string;
   org: string;
   period: string;
+  /** Work arrangement, e.g. "Remote". Rendered as a muted line under the org. */
+  location?: string;
   current?: boolean;
   points: string[];
 };
@@ -201,6 +242,28 @@ export const EXPERIENCE_TIMELINE: ExperienceItem[] = [
       "Design and research digital product experiences at FlyRank AI.",
       "Run user research to understand how people interact with the product.",
       "Translate findings into interface improvements and prototypes.",
+    ],
+  },
+  {
+    role: "Design QA & Recruiter Onboarding",
+    org: "Filesig Pte Ltd",
+    period: "Jun 2026 – Present",
+    location: "Remote",
+    points: [
+      "Worked across design QA, information design, and content operations for AI security products.",
+      "Reviewed learning materials and onboarding experiences for consistency, clarity, and usability.",
+      "Supported digital content and marketing workflows with 85% accuracy.",
+    ],
+  },
+  {
+    role: "Social Media Operations & Design",
+    org: "NAZ Malaysia",
+    period: "Apr 2026 – Jun 2026",
+    location: "Remote",
+    points: [
+      "Managed end-to-end social media content and operations for a Malaysia-focused relocation and property brand.",
+      "Conducted audience and competitor research and developed content systems.",
+      "Tracked performance across Instagram, YouTube, and Threads.",
     ],
   },
   {

@@ -24,7 +24,7 @@ function ProjectDetailPage() {
       <div className="space-y-4 text-center">
         <h1 className="text-2xl font-bold">Project Not Found</h1>
         <Link to="/project" className="text-amber-300 underline underline-offset-2">
-          Back to Projects
+          Back to Publications &amp; Projects
         </Link>
       </div>
     );
@@ -34,10 +34,19 @@ function ProjectDetailPage() {
       <Particles />
       <article className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur md:p-10">
         <Link to="/project" className="text-sm text-amber-300 hover:underline">
-          ← Back to Projects
+          ← Back to Publications &amp; Projects
         </Link>
-        <p className="mt-4 text-xs uppercase tracking-[0.3em] text-amber-300">Case study</p>
+        <p className="mt-4 text-xs uppercase tracking-[0.3em] text-amber-300">
+          {data.isBlog ? "Publication" : "Case study"}
+        </p>
         <h1 className="mt-2 text-2xl font-bold md:text-4xl">{data.title}</h1>
+        {data.meta || data.category ? (
+          <p className="mt-2 text-sm text-white/60">
+            {data.meta ?? data.category}
+            {data.meta && data.category ? ` · ${data.category}` : ""}
+            {data.format ? ` · ${data.format}` : ""}
+          </p>
+        ) : null}
 
         <div className="grid gap-8 md:grid-cols-3">
           <div className="md:col-span-2">
