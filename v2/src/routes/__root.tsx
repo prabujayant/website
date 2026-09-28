@@ -1,10 +1,20 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, Outlet, createRootRoute, useRouterState } from "@tanstack/react-router";
 import { SOCIAL_LINKS } from "../constants";
+import { scrollToSection, useScrollSpy } from "../components/ScrollSpyNav";
+
+/** Single-page style sections the navbar can jump to. */
+const SECTION_IDS = ["home", "about", "skills", "experience", "resume"] as const;
 
 const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "resume", label: "Resume" },
+] as const;
+
+const ROUTE_NAV = [
   { to: "/project", label: "Projects" },
   { to: "/resume", label: "Resume" },
 ] as const;
@@ -16,6 +26,18 @@ function Layout() {
   const [load, setLoad] = useState(true);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const year = new Date().getFullYear();
+
+  const isHome = pathname === "/";
+  const activeSection = useScrollSpy(isHome ? SECTION_IDS.map(String) : [], 90);
+
+  const go = useCallback(
+    (id: string) => {
+      setOpen(false);
+      if (!isHome) return;
+      scrollToSection(id);
+    },
+    [isHome],
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => setLoad(false), 1200);
@@ -43,9 +65,10 @@ function Layout() {
           <p className="animate-pulse text-2xl font-bold tracking-widest text-amber-300">Portfolio</p>
         </div>
       ) : null}
+      {/* Sticky navbar — stays visible while scrolling down */}
       <nav
-        className={`fixed inset-x-0 top-0 z-20 border-b backdrop-blur transition-colors ${
-          scrolled ? "border-amber-300/20 bg-neutral-950/90" : "border-white/10 bg-neutral-950/70"
+        className={`sticky top-0 z-30 border-b backdrop-blur transition-colors ${
+          scrolled ? "border-amber-300/30 bg-neutral-950/95 shadow-lg shadow-black/40" : "border-white/10 bg-neutral-950/80"
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center px-4 py-3">
@@ -59,25 +82,67 @@ function Layout() {
             aria-label="Toggle navigation"
             aria-expanded={open}
           >
-            ☰
+            Menu
           </button>
+
+          {/* Desktop links */}
           <div className="ml-auto hidden items-center gap-5 text-sm text-white/80 md:flex">
-            {NAV.map((n) => (
-              <Link key={n.to} to={n.to} className="hover:text-amber-300 [&.active]:text-amber-300">
+            {NAV.map((n) => {
+              const isActive = isHome && activeSection === n.id;
+              if (isHome) {
+                return (
+                  <button
+                    key={n.id}
+                    type="button"
+                    onClick={() => go(n.id)}
+                    data-active={isActive}
+                    className="nav-link text-left"
+                    aria-current={isActive ? "true" : undefined}
+                  >
+                    <span className={isActive ? "text-amber-300" : undefined}>{n.label}</span>
+                  </button>
+                );
+              }
+              return (
+                <Link
+                  key={n.id}
+                  to="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    go(n.id);
+                  }}
+                  className="nav-link"
+                >
+                  {n.label}
+                </Link>
+              );
+            })}
+            <span className="h-5 w-px bg-white/15" />
+            {ROUTE_NAV.map((n) => (
+              <Link key={n.to} to={n.to} className="nav-link" data-active={pathname === n.to}>
                 {n.label}
               </Link>
             ))}
           </div>
         </div>
+
+        {/* Mobile links */}
         {open ? (
           <div className="flex flex-col gap-1 border-t border-white/10 px-4 py-3 text-sm md:hidden">
             {NAV.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                className="rounded px-2 py-2 hover:bg-white/5 hover:text-amber-300 [&.active]:text-amber-300"
+              <button
+                key={n.id}
+                type="button"
+                onClick={() => go(n.id)}
+                className={`rounded px-2 py-2 text-left hover:bg-white/5 ${
+                  isHome && activeSection === n.id ? "text-amber-300" : ""
+                }`}
               >
+                {n.label}
+              </button>
+            ))}
+            {ROUTE_NAV.map((n) => (
+              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="rounded px-2 py-2 hover:bg-white/5 hover:text-amber-300">
                 {n.label}
               </Link>
             ))}
@@ -85,7 +150,7 @@ function Layout() {
         ) : null}
       </nav>
 
-      <main className="mx-auto max-w-6xl px-4 pb-12 pt-20">
+      <main className="mx-auto max-w-6xl px-4 pb-12">
         <Outlet />
       </main>
 
@@ -95,9 +160,14 @@ function Layout() {
             <h3 className="font-semibold">Designed and Developed by Siti Annisa Dahlan</h3>
             <nav aria-label="Footer" className="mt-3 flex flex-wrap gap-4 text-sm">
               {NAV.map((n) => (
-                <Link key={n.to} to={n.to} className="text-white/70 hover:text-amber-300">
+                <button
+                  key={n.id}
+                  type="button"
+                  onClick={() => go(n.id)}
+                  className="text-white/70 hover:text-amber-300"
+                >
                   {n.label}
-                </Link>
+                </button>
               ))}
             </nav>
             <p className="mt-3 text-sm text-white/50">HCI Research • UI/UX Design • English Education</p>

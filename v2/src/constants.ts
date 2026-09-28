@@ -113,6 +113,128 @@ export const TYPEWRITER_WORDS: string[] = [
   "Digital Content Strategist",
 ];
 
+// ---------------------------------------------------------------------------
+// Home page content
+// ---------------------------------------------------------------------------
+
+/** Hero line that types itself out, pauses, then re-types (rotating effect). */
+export const HERO_TAGLINE = "I research people, design for their needs, and build for better experiences.";
+
+/** Floating "what I do" bubbles shown in the hero and About section. */
+export const PROFESSIONAL_FOCUS: string[] = [
+  "UX Research",
+  "Interaction Design",
+  "Educational Technology",
+];
+
+/** "Know Who I Am" copy — rendered on the About section. */
+export const ABOUT_PARAGRAPHS: string[] = [
+  "I work across UX research and UI/UX design, focusing on how people interact with digital products. At FlyRank AI, I work on UI/UX design and user research. Earlier, at GaoTek, I worked on interface design, user research, and usability improvements for digital products.",
+  "My background is in English Language Education. Over time, my interest in how people learn and interact with technology led me toward educational technology and HCI research.",
+  "Recently, I've been building and researching learning-focused digital products, from TaskFlow, a student deadline-management platform, to research on the UX of language-learning applications. I also published research on AI in English language learning.",
+  "I enjoy turning complex user needs into simple, useful digital experiences.",
+];
+
+/** Words highlighted in amber inside the About copy. */
+export const ABOUT_HIGHLIGHTS: string[] = [
+  "UX research",
+  "UI/UX design",
+  "FlyRank AI",
+  "GaoTek",
+  "English Language Education",
+  "educational technology",
+  "HCI research",
+  "TaskFlow",
+  "UX of language-learning applications",
+  "AI in English language learning",
+];
+
+export type SkillGroup = {
+  title: string;
+  blurb: string;
+  level: number;
+  items: string[];
+};
+
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    title: "UX Research",
+    blurb: "Finding out what people actually do, not just what they say.",
+    level: 90,
+    items: ["User Interviews", "Qualitative Analysis", "Usability Testing", "Heuristic Evaluation", "Pain Point Synthesis"],
+  },
+  {
+    title: "Interaction Design",
+    blurb: "Turning research into clear, usable interfaces.",
+    level: 88,
+    items: ["Wireframing", "Prototyping", "Information Architecture", "User-Centered Design", "Design Systems"],
+  },
+  {
+    title: "Educational Technology",
+    blurb: "Designing learning experiences that people keep using.",
+    level: 85,
+    items: ["Learning Platforms", "Gamified Reading", "Content Design", "TaskFlow", "Language Learning UX"],
+  },
+  {
+    title: "Front-end Web",
+    blurb: "Shipping the design so it works in a real browser.",
+    level: 75,
+    items: ["HTML5", "CSS3", "Responsive Web Design", "Figma", "Prototyping Tools"],
+  },
+];
+
+export type ExperienceItem = {
+  role: string;
+  org: string;
+  period: string;
+  current?: boolean;
+  points: string[];
+};
+
+export const EXPERIENCE_TIMELINE: ExperienceItem[] = [
+  {
+    role: "UI/UX Design & User Research",
+    org: "FlyRank AI",
+    period: "Present",
+    current: true,
+    points: [
+      "Design and research digital product experiences at FlyRank AI.",
+      "Run user research to understand how people interact with the product.",
+      "Translate findings into interface improvements and prototypes.",
+    ],
+  },
+  {
+    role: "Interface Design & Usability",
+    org: "GaoTek",
+    period: "Earlier",
+    points: [
+      "Worked on interface design for digital products.",
+      "Conducted user research to identify usability problems.",
+      "Improved usability based on research findings and user feedback.",
+    ],
+  },
+  {
+    role: "Independent Research & Product Building",
+    org: "Personal Projects",
+    period: "Ongoing",
+    points: [
+      "Built TaskFlow, a student deadline-management platform, from research to shipped prototype.",
+      "Published peer-reviewed research on AI in English language learning.",
+      "Published a heuristic UX audit of Duolingo, Babbel, and ELSA Speak.",
+    ],
+  },
+  {
+    role: "English Language Education",
+    org: "Halu Oleo University",
+    period: "Undergraduate",
+    points: [
+      "Bachelor of Education in English Language (GPA 3.50 / 4.0).",
+      "PMM4 National Student Exchange Awardee — fully funded, Universitas Nusa Cendana.",
+      "Led student projects and exchange programmes across different cultures.",
+    ],
+  },
+];
+
 // Replaces ad-hoc axios usage (none in v1 src) with a typed Query fetcher.
 export async function fetchProjects(): Promise<Project[]> {
   return PROJECTS_DATA;
