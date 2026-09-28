@@ -1,6 +1,6 @@
 import { createRoute } from "@tanstack/react-router";
 import { Route as RootRoute } from "./__root";
-import resumeUrl from "../assets/Resume_UIUX_Annis.pdf";
+import resumeUrl from "../assets/CV_Siti_Annisa_Dahlan.pdf";
 import { Particles } from "../components/Particles";
 
 export const Route = createRoute({
@@ -18,6 +18,7 @@ function ResumePage() {
         <h1 className="mt-2 text-3xl font-bold md:text-4xl">My Experience</h1>
         <a
           href={resumeUrl}
+          download="CV_Siti_Annisa_Dahlan.pdf"
           target="_blank"
           rel="noreferrer"
           className="mt-4 inline-block rounded-lg border border-amber-300/60 px-5 py-2.5 text-amber-300 hover:bg-amber-300 hover:text-black"
@@ -29,6 +30,7 @@ function ResumePage() {
       <div>
         <a
           href={resumeUrl}
+          download="CV_Siti_Annisa_Dahlan.pdf"
           target="_blank"
           rel="noreferrer"
           className="inline-block rounded-lg border border-amber-300/60 px-5 py-2.5 text-amber-300 hover:bg-amber-300 hover:text-black"

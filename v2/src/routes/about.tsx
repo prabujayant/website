@@ -20,13 +20,25 @@ const PROCESS: { title: string; body: string }[] = [
   { title: "Collaboration", body: "Notion, Slack, Google Workspace, Project Management" },
 ];
 
-const SOFTWARE = ["Figma", "Photoshop", "Notion", "HTML5", "CSS3"];
-const TOOLS = ["Figma", "Notion", "Slack", "Canva", "Google Workspace", "Adobe Photoshop"];
+// Single, de-duplicated tools list used by the one "Tools I Use" section below.
+// This is the merged union of the old "Software & Tools" and "Tools I Use" lists.
+const TOOLS = [
+  "Figma",
+  "Adobe Photoshop",
+  "Canva",
+  "Notion",
+  "Slack",
+  "Google Workspace",
+  "Microsoft 365 Copilot",
+  "HTML5",
+  "CSS3",
+];
 
 const EDUCATION = [
   "Pursuing a Bachelor of Education in English Language at Halu Oleo University (GPA: 3.50/4.0).",
   "PMM4 National Student Exchange Awardee — $1,017 scholarship (Top 15,000 of 50,000+ applicants).",
   'Published Researcher: "The Use of AI in EFL Learning" — IJOPATE Vol. 4, Issue 1.',
+  'Published Researcher: "User Experience Audit of Three Popular Language Learning Apps" — The Journal of Social Media for Learning (JSML), Vol. 1 No. 1, LJMU, 2026.',
 ];
 
 const FOCUS = [
@@ -120,29 +132,15 @@ function AboutPage() {
           ))}
         </div>
 
-        <h3 className="mt-10 text-center text-xl font-bold text-amber-300">Software & Tools</h3>
+        <h3 className="mt-10 text-center text-xl font-bold text-amber-300">Tools I Use</h3>
         <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-          {SOFTWARE.map((s) => (
-            <div
-              key={s}
-              className="rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center transition-transform duration-300 hover:-translate-y-2"
-            >
-              <div className="text-3xl">✦</div>
-              <div className="mt-2 text-white">{s}</div>
-            </div>
-          ))}
-        </div>
-
-        <h2 className="mt-12 text-center text-3xl font-extrabold">
-          <span className="text-amber-300">Tools</span> I Use
-        </h2>
-        <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6">
           {TOOLS.map((t) => (
             <div
               key={t}
-              className="rounded-2xl border border-amber-300/30 bg-[#2e2e2e] p-5 text-center text-sm text-white transition-transform duration-300 hover:-translate-y-2"
+              className="rounded-2xl border border-amber-300/30 bg-gradient-to-br from-neutral-900 to-neutral-800 p-6 text-center transition-transform duration-300 hover:-translate-y-2"
             >
-              {t}
+              <div className="text-3xl">✦</div>
+              <div className="mt-2 text-white">{t}</div>
             </div>
           ))}
         </div>

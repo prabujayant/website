@@ -5,7 +5,6 @@ export type ProjectCardProps = {
   isBlog?: boolean;
   title: string;
   description: string;
-  imgPath?: string;
   demoLink: string;
   customButtonText?: string;
 };
@@ -28,19 +27,6 @@ export function ProjectCard(props: ProjectCardProps) {
       >
         <span className={liked ? "text-rose-400" : "text-white/50"}>♥</span>
       </button>
-
-      {props.imgPath ? (
-        <img
-          src={props.imgPath}
-          alt={`${props.title} — project showcase image`}
-          loading="lazy"
-          className="h-44 w-full object-cover"
-        />
-      ) : (
-        <div aria-hidden="true" className="flex h-44 w-full items-center justify-center bg-white/5 text-5xl">
-          📖
-        </div>
-      )}
 
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-semibold leading-snug">{props.title}</h3>

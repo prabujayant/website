@@ -13,8 +13,8 @@ export const Route = createRoute({
 });
 
 const STATS = [
-  { value: "6+", label: "Projects shipped" },
-  { value: "1", label: "Journal publication" },
+  { value: "7+", label: "Projects shipped" },
+  { value: "2", label: "Journal publications" },
   { value: "4", label: "Awards & honors" },
 ];
 
@@ -32,8 +32,8 @@ function HomePage() {
           <p className="text-white/80">
             Hi There! <span role="img" aria-label="waving hand">👋</span>
           </p>
-          <h1 className="mt-3 text-4xl font-extrabold leading-tight md:text-5xl">
-            <span className="mr-3 align-middle text-xl font-semibold text-white/70">I'M</span>
+          <h1 className="mt-3 text-5xl font-extrabold leading-tight md:text-6xl">
+            <span className="mr-3 align-middle text-2xl font-semibold text-white/70">I'M</span>
             SITI ANNISA DAHLAN
           </h1>
           <div className="mt-4 h-1 w-40 bg-gradient-to-r from-amber-300 via-fuchsia-400 to-cyan-300" />
@@ -73,7 +73,7 @@ function HomePage() {
           </dl>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm">
+        <div className="relative mx-auto w-full max-w-60 md:max-w-65">
           <div className="absolute inset-0 -rotate-2 rounded-3xl bg-gradient-to-br from-amber-300/25 to-fuchsia-400/25 blur-sm" />
           <img src={heroImg} alt="Illustrated portrait of Siti Annisa Dahlan" className="relative w-full rounded-3xl border border-white/10" />
           <div className="absolute -top-3 left-4 rounded-full bg-amber-300 px-3 py-1 text-xs font-bold text-black">
@@ -133,7 +133,6 @@ function HomePage() {
               isBlog={p.isBlog ?? false}
               title={p.title}
               description={p.excerpt ?? p.description.split("\n")[0]}
-              imgPath={p.imgPath}
               demoLink={`/project/${p.id}`}
               customButtonText="Read Case Study"
             />

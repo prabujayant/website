@@ -39,16 +39,6 @@ function ProjectDetailPage() {
         <p className="mt-4 text-xs uppercase tracking-[0.3em] text-amber-300">Case study</p>
         <h1 className="mt-2 text-2xl font-bold md:text-4xl">{data.title}</h1>
 
-        {data.imgPath ? (
-          <img
-            src={data.imgPath}
-            alt={`${data.title} cover`}
-            loading="lazy"
-            className="mx-auto my-8 block w-full max-w-3xl rounded-2xl border border-white/10 object-cover"
-            style={{ maxHeight: 320 }}
-          />
-        ) : null}
-
         <div className="grid gap-8 md:grid-cols-3">
           <div className="md:col-span-2">
             <h3 className="mb-3 font-semibold text-amber-300">Overview</h3>

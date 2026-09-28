@@ -1,10 +1,3 @@
-import journalAiImg from "./assets/Projects/journal-ai.jpg";
-import deskTaskflowImg from "./assets/Projects/desk-taskflow.jpg";
-import readingThinkinkImg from "./assets/Projects/reading-thinkink.jpg";
-import newspaperBlogImg from "./assets/Projects/newspaper-blog.jpg";
-import textbookEnglishImg from "./assets/Projects/textbook-english.jpg";
-import universityExchangeImg from "./assets/Projects/university-exchange.jpg";
-
 export type SocialLink = {
   id: string;
   label: string;
@@ -27,7 +20,6 @@ export type Project = {
   demoLink: string;
   isBlog?: boolean;
   customButtonText?: string;
-  imgPath?: string;
   excerpt?: string;
 };
 
@@ -39,15 +31,22 @@ export const PROJECTS_DATA: Project[] = [
     demoLink: "https://ejournal.gomit.id/ijopate/article/view/586",
     isBlog: true,
     customButtonText: "Read Article",
-    imgPath: journalAiImg,
     excerpt: "Peer-reviewed journal article on AI in English language learning — balancing innovation with human connection.",
+  },
+  {
+    id: 7,
+    title: "User Experience Audit of Three Popular Language Learning Apps: A Heuristic Evaluation of Duolingo, Babbel, and ELSA Speak",
+    description: "Journal Article / Peer-reviewed in The Journal of Social Media for Learning (JSML), Vol. 1 No. 1 (2026), Liverpool John Moores University. Published 1 September 2026. DOI: 10.24377/LJMU.jsml.article3570. Tags: Publication, HCI, UX Research, Heuristic Evaluation, MALL.",
+    demoLink: "https://openjournals.ljmu.ac.uk/JSML/article/view/3570",
+    isBlog: true,
+    customButtonText: "Read Article",
+    excerpt: "Multi-evaluator heuristic evaluation of Duolingo, Babbel, and ELSA Speak using Nielsen's 10 Usability Heuristics — and the original Pedagogical Usability framework.",
   },
   {
     id: 2,
     title: "TaskFlow — Academic Deadline Management",
     description: "Tags: UI/UX, HCI, Prototype, HTML\nProblem: Students miss deadlines because info is spread across WhatsApp, LMS, email, and classroom — no central place to track.\nSolution / outcome: Reduced cognitive load through one dashboard with clear visual prioritization — designed via Research → Wireframe → Prototype → Web Implementation.",
     demoLink: "https://liquiud-s.github.io/firstproject.github.io/",
-    imgPath: deskTaskflowImg,
     excerpt: "Centralized academic deadline dashboard that cuts cognitive load — from user research to shipped prototype.",
   },
   {
@@ -55,7 +54,6 @@ export const PROJECTS_DATA: Project[] = [
     title: "Think Ink — Gamified Reading Platform",
     description: "A responsive gamified reading platform applying minimalist UI principles and user-centered information architecture. Features progress tracking and visual rewards for a 30% retention improvement.",
     demoLink: "https://thinkinkreading2025.weebly.com",
-    imgPath: readingThinkinkImg,
   },
   {
     id: 4,
@@ -63,14 +61,12 @@ export const PROJECTS_DATA: Project[] = [
     description: "Independently developed book review blog achieving a 90+ Lighthouse score. Applied UI/UX best practices like typography contrast and whitespace to reduce reading friction by 25%.",
     demoLink: "https://readingwithannis.vercel.app",
     isBlog: true,
-    imgPath: newspaperBlogImg,
   },
   {
     id: 5,
     title: "Digital English Book (Book Creator)",
     description: "A collaborative project featuring student-generated English texts and listening activities, designed to enhance learning outcomes for junior high school students.",
     demoLink: "https://read.bookcreator.com/kWWJwNINR0dg7GPkPfi4sdGpygH2/99UftvSAQ4yveIKrRaXmVw",
-    imgPath: textbookEnglishImg,
   },
   {
     id: 6,
@@ -78,7 +74,6 @@ export const PROJECTS_DATA: Project[] = [
     description: "Documenting reflections and cultural growth during the PMM4 student exchange program, providing insights into international academic experiences.",
     demoLink: "https://explorewithannis.weebly.com",
     isBlog: true,
-    imgPath: universityExchangeImg,
   },
 ];
 

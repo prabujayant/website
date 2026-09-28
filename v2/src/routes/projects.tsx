@@ -39,8 +39,7 @@ function ProjectsPage() {
             isBlog={p.isBlog ?? false}
             title={p.title}
             description={p.description}
-            imgPath={p.imgPath}
-            demoLink={p.isBlog || !p.imgPath ? p.demoLink : `/project/${p.id}`}
+            demoLink={p.isBlog ? p.demoLink : `/project/${p.id}`}
             customButtonText={p.customButtonText}
           />
         ))}
