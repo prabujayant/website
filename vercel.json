@@ -3,5 +3,6 @@
   "framework": "vite",
   "installCommand": "npm install --prefix v2",
   "buildCommand": "npm run build --prefix v2",
-  "outputDirectory": "v2/dist"
+  "outputDirectory": "v2/dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
